@@ -1,0 +1,101 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+use Illuminate\Support\Facades\DB;
+
+class ProductsSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
+    {
+        DB::table('products')->insert([
+            [
+                'category_id' => 1,
+                'name' => 'Hambúrguer Clássico',
+                'description' => 'Hambúrguer clássico com um único hambúrguer e coberturas à sua escolha.',
+                'price' => 8.99,
+                'thumbnail' => 'hamburguer.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name' => 'Cheeseburger Duplo com Cheddar e Bacon',
+                'description' => 'Dois hambúrgueres suculentos cobertos com queijo cheddar derretido e bacon crocante.',
+                'price' => 12.50,
+                'thumbnail' => 'double_cheeseburger.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 1,
+                'name' => 'Hambúrguer de Frango',
+                'description' => 'Hambúrguer de frango empanado servido no pão com alface fresca e tomate.',
+                'price' => 9.50,
+                'thumbnail' => 'chicken_hamburger.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Casquinha de Chocolate',
+                'description' => 'Sorvete de casquinha cremoso sabor chocolate.',
+                'price' => 4.75,
+                'thumbnail' => 'chocolate_ice_cream.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 2,
+                'name' => 'Casquinha de Baunilha',
+                'description' => 'Sorvete de casquinha cremoso sabor baunilha.',
+                'price' => 4.50,
+                'thumbnail' => 'vanilla_ice_cream.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'name' => 'Refrigerante Cola',
+                'description' => 'Bebida gaseificada refrescante com sabor de cola.',
+                'price' => 3.00,
+                'thumbnail' => 'cola_soda.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 3,
+                'name' => 'Refrigerante de Laranja',
+                'description' => 'Bebida gaseificada refrescante com sabor de laranja.',
+                'price' => 3.00,
+                'thumbnail' => 'orange_soda.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],            
+            [
+                'category_id' => 3,
+                'name' => 'Refrigerante de Limão e Lima',
+                'description' => 'Bebida gaseificada refrescante com sabor de limão e lima.',
+                'price' => 3.00,
+                'thumbnail' => 'lemon_lime_soda.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'category_id' => 4,
+                'name' => 'Batata Frita',
+                'description' => 'Tiras de batata fritas crocantes e douradas.',
+                'price' => 5.50,
+                'thumbnail' => 'french_fries.png',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ]);
+    }
+}

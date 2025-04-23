@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\OrdersStatus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -20,6 +21,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@meserve.com',
             'password' => bcrypt('admin'),
             'role' => 'admin',
+        ]);
+
+        $this->call([
+            CategoriesSeeder::class,
+            ProductsSeeder::class,
+            OrdersStatusSeeder::class,
         ]);
     }
 }
