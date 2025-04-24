@@ -26,7 +26,7 @@ class ProductsSeeder extends Seeder
             ],
             [
                 'category_id' => 1,
-                'name' => 'Cheeseburger Duplo com Cheddar e Bacon',
+                'name' => 'Cheeseburger Duplo',
                 'description' => 'Dois hambúrgueres suculentos cobertos com queijo cheddar derretido e bacon crocante.',
                 'price' => 12.50,
                 'thumbnail' => 'products/double_cheeseburger.png',
