@@ -2,7 +2,7 @@
   <h1>Narvbar</h1>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'Navbar'
 }

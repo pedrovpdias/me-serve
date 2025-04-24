@@ -8,11 +8,11 @@
         @vite(['resources/css/app.css', 'resources/js/main.ts'])
 
         <title>
-            meServe
+            meServe | Sistema de auto-atendimento
         </title>
 
     </head>
-    <body>
+    <body class="font-sans antialiased text-primary">
         <div id="app"></div>
     </body>
 </html>

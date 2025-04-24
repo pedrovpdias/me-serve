@@ -2,7 +2,7 @@
   <h1>Resumo do carrinho</h1>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'ShoppingCart'
 }

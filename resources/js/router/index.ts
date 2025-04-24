@@ -2,7 +2,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 // Importar as views
-import MenuView from '@/views/MenuView.vue';
+import HomeView from '@/views/HomeView.vue';
 import CartView from '@/views/CartView.vue';
 import PaymentView from '@/views/PaymentView.vue';
 import CheckoutView from '@/views/CheckoutView.vue';
@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'menu',
-      component: MenuView,
+      component: HomeView,
     },
     {
       path: '/cart',
