@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import ProductCard from '../components/ProductCard.vue';
-//import { useCartStore } from '../stores/userCartStore';
+import { useCartStore } from '../stores/userCartStore';
 
 interface Product {
   id: number;
@@ -12,7 +12,7 @@ interface Product {
 }
 const products = ref<Product[]>([]);
 
-//const cart = useCartStore();
+const cart = useCartStore();
 
 onMounted(async () => {
   const { data } = await axios.get('/api/products');
@@ -20,7 +20,7 @@ onMounted(async () => {
 });
 
 function addToCart(product: any) {
-  //cart.addItem(product);
+  cart.addItem(product);
 }
 </script>
 
