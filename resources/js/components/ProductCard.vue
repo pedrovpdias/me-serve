@@ -29,8 +29,10 @@
       
       <button 
         @click="$emit('adicionar', product)" 
-        class="bg-linear-to-tr from-red-500 to-red-600 text-white py-2 px-4 mb-4 w-fit rounded-full font-bold justify-self-end hover:from-red-700 hover:to-red-800 focus:from-red-700 focus:to-red-800 outline-none"
+        class="flex items-center gap-2 bg-linear-to-tr from-red-500 to-red-600 text-white py-2 px-4 mb-4 w-fit rounded-full font-bold justify-self-end hover:from-red-700 hover:to-red-800 focus:from-red-700 focus:to-red-800 outline-none"
       >
+        <i class="bi bi-plus-circle"></i>
+
         Adicionar
       </button>
     </div>
