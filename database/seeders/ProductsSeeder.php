@@ -18,7 +18,7 @@ class ProductsSeeder extends Seeder
             [
                 'category_id' => 1,
                 'name' => 'Hambúrguer Clássico',
-                'description' => 'Hambúrguer clássico com um único hambúrguer e coberturas à sua escolha.',
+                'description' => 'Pão com gergelim, um hambúrguer de carne 100% bovino grelhado no fogo, alface fresquinha, tomate, cebola, fatias de queijo derretido sabor cheddar.',
                 'price' => 8.99,
                 'thumbnail' => 'products/hamburguer.png',
                 'created_at' => now(),
@@ -35,8 +35,8 @@ class ProductsSeeder extends Seeder
             ],
             [
                 'category_id' => 1,
-                'name' => 'Hambúrguer de Frango',
-                'description' => 'Hambúrguer de frango empanado servido no pão com alface fresca e tomate.',
+                'name' => 'Chicken Crispy',
+                'description' => 'Um delicioso e suculento filé de frango empanado crocante servido no pão com alface fresca e tomate.',
                 'price' => 9.50,
                 'thumbnail' => 'products/chicken_hamburger.png',
                 'created_at' => now(),
