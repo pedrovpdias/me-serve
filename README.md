@@ -50,10 +50,10 @@ npm run dev
 
 | Método | Rota               | Protegida? | Descrição                   |
 |--------|--------------------|------------|-----------------------------|
-| GET    | /api/produtos      |     ❌    | Lista todos os produtos     |
-| POST   | /api/produtos      |     ✅    | Cadastra um novo produto    |
-| PUT    | /api/produtos/{id} |     ✅    | Atualiza um produto         |
-| DELETE | /api/produtos/{id} |     ✅    | Remove um produto           |
+| GET    | /api/products      |     ❌    | Lista todos os produtos     |
+| POST   | /api/products      |     ✅    | Cadastra um novo produto    |
+| PUT    | /api/products/{id} |     ✅    | Atualiza um produto         |
+| DELETE | /api/products/{id} |     ✅    | Remove um produto           |
 
 ---
 
@@ -71,6 +71,6 @@ npm run dev
 
 ## 📜 Licença
 
-Este projeto é livre para uso educacional.
+Este é um projeto opensource desenvolvido para estudo.
 
 Desenvolvido por Pedro Dias ☕
