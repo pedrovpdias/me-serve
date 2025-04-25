@@ -57,11 +57,13 @@
     >
       <button
         @click="$router.push('/')"
-        class="flex items-center gap-2 font-bold outline-none text-red-600 hover:text-red-800 focus:text-red-800"
+        class="flex items-center gap-2 font-bold outline-none text-red-600 hover:text-red-800 focus:text-red-800 group"
       >
         <i class="bi bi-arrow-left-short"></i>
 
-        Continuar comprando
+        <span class="group-hover:underline group-focus:underline">
+          Continuar comprando
+        </span>
       </button>
     </div>
 
