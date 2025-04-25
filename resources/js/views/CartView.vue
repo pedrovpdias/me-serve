@@ -1,19 +1,18 @@
 <template>
-  <main class="grid gap-8 relative">
+  <div class="grid gap-8 relative">
     <Navbar />
 
-    <section class="grid">
-      <h1 class="text-4xl font-black font-highlight text-red-600 px-4">
+    <main class="grid gap-4 px-4">
+      <h1 class="text-4xl font-black font-highlight text-red-600">
         Carrinho
       </h1>
 
-      <div>
-        <ShoppingCart />
-      </div>
-    </section>
-  </main>
+      <ShoppingCart />
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
   import Navbar from '../components/Navbar.vue';
+  import ShoppingCart from '../components/ShoppingCart.vue';
 </script>

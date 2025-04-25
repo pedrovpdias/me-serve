@@ -5,9 +5,11 @@ export const useCartStore = defineStore('cart', {
   state: () => ({
     items: [] as Array<{ 
       id: number; 
-      name: string; 
+      name: string;
+      description: string;
       price: number; 
-      quantity: number 
+      quantity: number;
+      thumbnail: string
     }>,
   }),
   getters: {
@@ -18,8 +20,10 @@ export const useCartStore = defineStore('cart', {
   actions: {
     addItem(product: { 
       id: number; 
-      name: string; 
-      price: number 
+      name: string;
+      description: string;
+      price: number;
+      thumbnail: string
     }) 
     {
       const existente = this.items.find((item) => item.id === product.id);
