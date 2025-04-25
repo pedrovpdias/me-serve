@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-full rounded-xl shadow-xl bg-secondary mx-4">
+  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-auto rounded-xl shadow-xl bg-secondary mx-3 border border-black/5">
     <h2 class="text-2xl font-red-600 font-black font-highlight col-span-2">
       Carrinho
     </h2>
@@ -33,7 +33,7 @@
           @click="$router.push('/cart')"
           class="flex gap-2 items-center w-fit rounded-full py-2 px-4 font-bold bg-linear-to-tr from-amber-400 to-amber-500 text-white hover:from-amber-500 hover:to-amber-600 focus:from-amber-500 focus:to-amber-600 outline-none"
         >
-          Finalizar compra
+          Finalizar pedido
 
           <i class="bi bi-check-circle"></i>
         </button>
