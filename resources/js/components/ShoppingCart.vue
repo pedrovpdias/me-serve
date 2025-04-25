@@ -67,7 +67,7 @@
 
     <div class="grid gap-4">
       <h2 class="text-xl font-black font-highlight">
-        Resumo de valores
+        Resumo do pedido
       </h2>
 
       <ul v-if="hasItems" class="w-full grid gap-2">

@@ -9,6 +9,11 @@
 
   const hasItems = computed(() => cart.items.length > 0);
 
+  // Soma todos os itens do carrinho
+  const cartItens = computed(() => {
+    return cart.items.reduce((total, item) => total + item.quantity, 0);
+  });
+
 </script>
 
 <template>
@@ -18,7 +23,7 @@
     </h2>
 
     <span>
-      {{ cart.items.length }} {{ cart.items.length === 1 ? 'item' : 'itens' }}
+      {{ cartItens }} {{ cartItens === 1 ? 'item' : 'itens' }}
     </span>
 
     <span class="text-right font-bold text-xl">
