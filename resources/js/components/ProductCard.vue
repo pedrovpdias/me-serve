@@ -23,7 +23,7 @@
 <template>
   <div class="rounded-xl shadow bg-white grid overflow-hidden">
     <div class="w-full h-fit mx-auto bg-secondary grid place-items-center rounder-tl-xl rounder-tr-xl p-4">
-      <img :src="product.thumbnail" alt="product" class="w-auto h-80" />
+      <img :src="product.thumbnail" :alt="product.name" class="w-auto h-80" />
     </div>
     
     <div class="py-4 px-8 grid gap-1">

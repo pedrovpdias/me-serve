@@ -17,21 +17,25 @@ class CategoriesSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'name' => 'Hambúrgueres',
+                'order' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'Sorvetes',
+                'name' => 'Sobremesas',
+                'order' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'Refrigerantes',
+                'name' => 'Bebidas',
+                'order' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'name' => 'Acompanhamentos',
+                'order' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -9,6 +9,6 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
     public function index() {
-        return response()->json(Category::all());
+        return response()->json(Category::orderBy('order', 'asc')->get());
     }
 }
