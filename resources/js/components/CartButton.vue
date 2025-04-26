@@ -12,7 +12,7 @@
   <button
     id="cart-button"
     @click="$router.push('/cart')"
-    :class="['grid place-content-center relative shadow text-red-600 rounded-full w-12 h-12 outline-none', hasItems ? 'hover:bg-secondary/50 focus:bg-secondary/50' : 'opacity-50']"
+    :class="['grid place-content-center relative shadow text-red-600 rounded-full w-12 h-12 outline-none', hasItems ? 'hover:bg-secondary/50 focus:bg-secondary/50 hover:shadow-inner focus:shadow-inner' : 'opacity-50']"
     :disabled="!hasItems"
   >
     <span v-if="hasItems" class="absolute top-0 right-0 text-xs bg-red-600 text-white rounded-full w-4 h-4 flex justify-center items-center">

@@ -1,31 +1,28 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
-  import ProductCard from '../components/ProductCard.vue';
+  import CategorySection from '../components/CategorySection.vue';
 
-  interface Product {
+  interface Category {
     id: number;
     name: string;
-    description: string;
-    price: number;
-    thumbnail: string;
   }
-  const products = ref<Product[]>([]);
+  const categories = ref<Category[]>([]);
 
 
   onMounted(async () => {
-    const { data } = await axios.get('/api/products');
-    products.value = data;
+    const { data } = await axios.get('/api/categories');
+    categories.value = data;
   });
 
 </script>
 
 <template>
-  <main class="p-4 grid grid-cols-2 gap-4">
-    <ProductCard
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
+  <main class="grid gap-4">
+    <CategorySection
+      v-for="category in categories"
+      :key="category.id"
+      :category="category"
       
     />
   </main>

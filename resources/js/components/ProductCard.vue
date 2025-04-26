@@ -28,9 +28,9 @@
     
     <div class="py-4 px-8 grid gap-1">
       <div class="grid">
-        <h2 class="text-2xl font-black font-highlight">
+        <h3 class="text-2xl font-black font-highlight">
           {{ product.name }}
-        </h2>
+        </h3>
 
         <p class="text-sm">
           {{ product.description }}

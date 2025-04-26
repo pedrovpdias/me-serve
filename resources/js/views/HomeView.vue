@@ -7,7 +7,7 @@
         Cardápio
       </h1>
 
-      <div>
+      <div class="pt-8">
         <MenuView />
       </div>
     </section>

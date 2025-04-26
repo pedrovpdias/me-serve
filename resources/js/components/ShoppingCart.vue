@@ -45,7 +45,7 @@
           <button
             @click="cart.removeItem(product.id)"
             type="button"
-            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:backdrop-brightness-95 focus:backdrop-brightness-95 flex-none"
+            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-secondary/50 focus:bg-secondary/50 hover:shadow-inner focus:shadow-inner flex-none"
           >
             <i class="bi bi-dash"></i>
           </button>
@@ -57,7 +57,7 @@
           <button
             @click="cart.addItem(product)"
             type="button"
-            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:backdrop-brightness-95 focus:backdrop-brightness-95 flex-none"
+            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-secondary/50 focus:bg-secondary/50 hover:shadow-inner focus:shadow-inner flex-none"
           >
             <i class="bi bi-plus"></i>
           </button>
