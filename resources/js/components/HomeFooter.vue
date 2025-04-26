@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
+  import PrimaryButton from './PrimaryButton.vue';
 
   import logo from '../../images/logo_hr.svg';
 
@@ -17,7 +18,7 @@
 </script>
 
 <template>
-  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-auto rounded-xl shadow-xl bg-secondary mx-3 border border-black/5">
+  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-auto -mx-px rounded-xl shadow-xl bg-secondary border border-black/5">
     <h2 class="text-2xl font-red-600 font-black font-highlight col-span-2">
       Carrinho
     </h2>
@@ -34,15 +35,7 @@
       <img :src="logo" alt="Logo" class="w-1/6 h-auto justify-self-start" tabindex="-1">
 
       <div class="flex justify-end">
-        <button
-          @click="$router.push('/cart')"
-          type="button"
-          class="flex gap-2 items-center w-fit rounded-full py-2 px-4 font-bold bg-linear-to-tr from-amber-400 to-amber-500 text-white hover:from-amber-500 hover:to-amber-600 focus:from-amber-500 focus:to-amber-600 outline-none"
-        >
-          Finalizar pedido
-
-          <i class="bi bi-check-circle"></i>
-        </button>
+        <PrimaryButton :text="'Finalizar compra'" :event="'/cart'" />
       </div>
     </div>
 

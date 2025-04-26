@@ -10,16 +10,14 @@
   <button
     @click="typeof event === 'function' ? event() : $router.push(event)"
     type="button"
-    class="flex flex-none gap-2 items-center w-fit h-fit rounded-full py-2 px-4 font-bold justify-self-end bg-linear-to-tr from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 focus:from-red-600 focus:to-red-700 active:shadow-inner outline-none"
+    class="flex flex-none gap-2 items-center w-fit h-fit rounded-full py-2 px-4 font-bold bg-linear-to-tr from-amber-400 to-amber-500 text-white hover:from-amber-500 hover:to-amber-600 focus:from-amber-500 focus:to-amber-600 active:shadow-inner outline-none"
   >
     {{ text }}
-
-    <slot name="icon" />
   </button>
 </template>
 
 <script lang="ts">
   export default {
-    name: 'DefaultButton'
+    name: 'PrimaryButton'
   }
 </script>

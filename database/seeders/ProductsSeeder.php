@@ -133,15 +133,6 @@ class ProductsSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'category_id' => 2,
-                'name' => 'OreoDream Mix',
-                'description' => 'Sorvete de baunilha misturado com pedaços de biscoito Oreo e cobertura de chocolate.',
-                'price' => 13.90,
-                'thumbnail' => 'storage/products/oreo_dream_mix.png',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ],
-            [
                 'category_id' => 4,
                 'name' => 'Onion Rings',
                 'description' => 'Uma porção clássica e saborosa de anéis de cebola empanados e fritos até ficarem dourados e crocantes.',

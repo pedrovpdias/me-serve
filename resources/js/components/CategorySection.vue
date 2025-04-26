@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
+  import Subtitle from './Subtitle.vue';
   import ProductCard from '../components/ProductCard.vue';
 
   interface Product {
@@ -26,18 +27,20 @@
         category_id: category.id
       }
     });
-    products.value = data; console.log(data);
+    products.value = data;
   });
 
 </script>
 
 <template>
   <section class="grid gap-4">
-    <h2 class="text-2xl font-bold font-highlight text-amber-500 px-4">
-      {{ category.name }}
-    </h2>
+    <Subtitle :text="category.name">
+      <template #icon>
+        <i class="bi bi-grid-fill text-sm"></i>
+      </template>
+    </Subtitle>
 
-    <div class="p-4 grid grid-cols-2 gap-4">
+    <div class="py-4 grid grid-cols-2 gap-4">
       <ProductCard
         v-for="product in products"
         :key="product.id"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
   import axios from 'axios';
-  import CategorySection from '../components/CategorySection.vue';
+  import CategorySection from './CategorySection.vue';
 
   interface Category {
     id: number;
@@ -30,6 +30,6 @@
 
 <script lang="ts">
   export default {
-    name: 'MenuView'
+    name: 'Menu'
   }
 </script>
