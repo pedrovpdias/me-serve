@@ -1,12 +1,26 @@
 <script setup lang="ts">
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
   import DefaultButton from './DefaultButton.vue';
+  import CartToast from '../components/CartToast.vue';
+
+  import { ref } from 'vue';
 
   const cart = useCartStore(); // Instancia o carrinho
+
+  const showToast = ref(false);
+  const productName = ref('');
 
   // Adiciona o produto ao carrinho
   function addToCart(product: any) {
     cart.addItem(product);
+
+    productName.value = product.name;
+    showToast.value = true;
+
+    // Toast desaparece depois de 2 segundos
+    setTimeout(() => {
+      showToast.value = false;
+    }, 2000);
   }
 
   defineProps<{
@@ -54,6 +68,8 @@
       </div>
     </div>
   </div>
+
+  <CartToast :visible="showToast" :productName="productName" @close="showToast = false" />
 </template>
 
 

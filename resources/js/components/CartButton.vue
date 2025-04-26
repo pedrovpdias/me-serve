@@ -19,8 +19,8 @@
       {{ cart.items.length }}
     </span>
 
-    <i v-if="hasItems" class="bi bi-basket-fill"></i>
-    <i v-else class="bi bi-basket opacity-50"></i>
+    <i v-if="hasItems" class="bi bi-bag-fill"></i>
+    <i v-else class="bi bi-bag opacity-50"></i>
   </button>
 </template>
 
