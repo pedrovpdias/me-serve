@@ -43,6 +43,7 @@
       
       <button 
         @click="addToCart(product)" 
+        type="button"
         class="flex items-center gap-2 py-2 px-4 mb-4 w-fit rounded-full font-bold justify-self-end bg-linear-to-tr from-red-500 to-red-600 text-white hover:from-red-700 hover:to-red-800 focus:from-red-700 focus:to-red-800 outline-none"
       >
         <i class="bi bi-plus-circle"></i>

@@ -26,16 +26,22 @@ export const useCartStore = defineStore('cart', {
       thumbnail: string
     }) 
     {
-      const existente = this.items.find((item) => item.id === product.id);
-      if (existente) {
-        existente.quantity++;
+      const existing = this.items.find((item) => item.id === product.id);
+      if (existing) {
+        existing.quantity++;
       } 
       else {
         this.items.push({ ...product, quantity: 1 });
       }
     },
     removeItem(id: number) {
-      this.items = this.items.filter((item) => item.id !== id);
+      const existing = this.items.find((item) => item.id === id);
+      if (existing) {
+        existing.quantity--;
+        if (existing.quantity === 0) {
+          this.items = this.items.filter((item) => item.id !== id);
+        }
+      }
     },
     clearCart() {
       this.items = [];

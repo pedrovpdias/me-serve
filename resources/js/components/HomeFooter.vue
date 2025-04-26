@@ -36,6 +36,7 @@
       <div class="flex justify-end">
         <button
           @click="$router.push('/cart')"
+          type="button"
           class="flex gap-2 items-center w-fit rounded-full py-2 px-4 font-bold bg-linear-to-tr from-amber-400 to-amber-500 text-white hover:from-amber-500 hover:to-amber-600 focus:from-amber-500 focus:to-amber-600 outline-none"
         >
           Finalizar pedido

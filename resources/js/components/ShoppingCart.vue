@@ -41,8 +41,26 @@
           </span>
         </div>
 
-        <span class="grid justify-end w-fit flex-none">
-          - +
+        <span class="flex items-center no-wrap justify-end w-fit flex-none">
+          <button
+            @click="cart.removeItem(product.id)"
+            type="button"
+            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:backdrop-brightness-95 focus:backdrop-brightness-95 flex-none"
+          >
+            <i class="bi bi-dash"></i>
+          </button>
+          
+          <span class="w-8 h-6 grid place-content-center flex-none">
+            {{ product.quantity }}
+          </span>
+
+          <button
+            @click="cart.addItem(product)"
+            type="button"
+            class="h-6 w-6 grid place-content-center shadow rounded text-red-600 outline-none hover:backdrop-brightness-95 focus:backdrop-brightness-95 flex-none"
+          >
+            <i class="bi bi-plus"></i>
+          </button>
         </span>
       </li>
     </ul>
