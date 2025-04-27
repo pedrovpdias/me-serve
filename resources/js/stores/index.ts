@@ -1,2 +1,2 @@
-import { createPinia } from 'pinia';
-export const pinia = createPinia();
+import { createPinia } from 'pinia'; // Importa o Pinia
+export const pinia = createPinia(); // Instancia o Pinia

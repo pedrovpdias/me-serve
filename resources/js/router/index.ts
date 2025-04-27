@@ -1,16 +1,17 @@
 // router/index.ts
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'; // Importa o Vue Router
 
 // Importar as views
-import HomeView from '@/views/HomeView.vue';
-import CartView from '@/views/CartView.vue';
-import PaymentView from '@/views/PaymentView.vue';
-import CheckoutView from '@/views/CheckoutView.vue';
+import HomeView from '@/views/HomeView.vue'; // Importa a view Home
+import CartView from '@/views/CartView.vue'; // Importa a view Cart
+import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
+import CheckoutView from '@/views/CheckoutView.vue'; // Importa a view Checkout
 
-
+// Cria o roteador
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    // Rotas
     {
       path: '/',
       name: 'home',
@@ -34,4 +35,4 @@ const router = createRouter({
   ],
 });
 
-export default router;
+export default router; // Exporta o roteador
