@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  // Recebe o texto do link
   defineProps<{
     text: string;
   }>()

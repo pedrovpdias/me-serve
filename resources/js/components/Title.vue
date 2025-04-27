@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  // Recebe o texto do título
   defineProps<{
     text: string;
   }>()

@@ -1,6 +1,7 @@
 <script setup lang="ts">
-  import CategorySection from './CategorySection.vue';
+  import CategorySection from './CategorySection.vue'; // Importa a seção de categoria
 
+  // Recebe as categorias
   const { categories } = defineProps<{
     categories: {
       id: number,

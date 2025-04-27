@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  // Recebe o texto e o evento a ser executado ao clicar no botão
   defineProps<{
     text: string;
     event: string | (() => void);

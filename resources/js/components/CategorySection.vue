@@ -1,9 +1,10 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
-  import axios from 'axios';
-  import Subtitle from './Subtitle.vue';
-  import ProductCard from '../components/ProductCard.vue';
+  import { ref, onMounted } from 'vue'; // Importa as bibliotecas do Vue
+  import axios from 'axios'; // Importa o axios
+  import Subtitle from './Subtitle.vue'; // Importa o sub-título
+  import ProductCard from '../components/ProductCard.vue'; // Importa o card de produto
 
+  // Interfaces do produto
   interface Product {
     id: number;
     name: string;
@@ -11,9 +12,9 @@
     price: number;
     thumbnail: string;
   }
-  const products = ref<Product[]>([]);
+  const products = ref<Product[]>([]); // Instancia os produtos
 
-
+  // Recebe a categoria
   const { category } = defineProps<{
     category: {
       id: number,
@@ -21,6 +22,7 @@
     }
   }>();
 
+  // Busca os produtos da categoria
   onMounted(async () => {
     const { data } = await axios.get('/api/products', {
       params: {

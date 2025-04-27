@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import { useCartStore } from '../stores/userCartStore';
+  import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
   
-  import { computed } from 'vue';
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
   const cart = useCartStore(); // Instancia o carrinho
   const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho

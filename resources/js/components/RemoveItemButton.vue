@@ -3,6 +3,7 @@
 
   const cart = useCartStore(); // Instancia o carrinho
 
+  // Recebe o produto
   defineProps<{
     product: any;
   }>();

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  // Recebe as categorias
   defineProps<{
     categories: {
       id: number, 
@@ -6,10 +7,11 @@
     }[];
   }>();
 
+  // Função para rolar para a categoria selecionada
   function scrollToCategory(categoryId: string) {
-    const categoryElement = document.getElementById(categoryId);
+    const categoryElement = document.getElementById(categoryId); // Pega o elemento da categoria
     if (categoryElement) {
-      categoryElement.scrollIntoView({ behavior: 'smooth' });
+      categoryElement.scrollIntoView({ behavior: 'smooth' }); // Rola para a categoria
     }
   }
 </script>

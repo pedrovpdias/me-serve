@@ -1,17 +1,17 @@
 <script setup lang="ts">
-  import { computed } from 'vue';
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
 
   const cart = useCartStore(); // Instancia o carrinho
   const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho
 
-
+  // Recebe o produto
   defineProps<{
     visible: boolean;
     productName: string;
   }>();
 
-  const emit = defineEmits(['close']);
+  const emit = defineEmits(['close']); // Define o emit para fechar o toast
 </script>
 
 <template>

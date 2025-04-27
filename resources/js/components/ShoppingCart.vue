@@ -1,17 +1,16 @@
 <script setup lang="ts">
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
-  import Subtitle from './Subtitle.vue';
-  import EmptyCartMessage from './EmptyCartMessage.vue';
-  import BackHomeAnchor from './BackHomeAnchor.vue';
-  import CartItemCounter from './CartItemCounter.vue';
+  import Subtitle from './Subtitle.vue'; // Importa o sub-título
+  import EmptyCartMessage from './EmptyCartMessage.vue'; // Importa a mensagem de carrinho vazio
+  import BackHomeAnchor from './BackHomeAnchor.vue'; // Importa o link para voltar para a home
+  import CartItemCounter from './CartItemCounter.vue'; // Importa os botões de adicionar e remover itens & o contador de itens
 
-  import { computed } from 'vue';
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
   const cart = useCartStore(); // Instancia o carrinho
   const products = computed(() => cart.items); // Itens do carrinho
 
-  // Verifica se há itens no carrinho
-  const hasItems = computed(() => cart.items.length > 0);
+  const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho
 
 </script>
 

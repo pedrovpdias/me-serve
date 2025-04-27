@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import logo from '../../images/logo.svg';
+  import logo from '../../images/logo.svg'; // Importa a logo
 
-  import { useRoute } from 'vue-router';
-  import { computed } from 'vue';
+  import { useRoute } from 'vue-router'; // Importa as rotas do Vue
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
-  const route = useRoute();
+  const route = useRoute(); // Instancia as rotas
 
   // Verifica se a rota atual é a home
   const isHome = computed(() => route.name === 'home');

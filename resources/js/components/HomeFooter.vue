@@ -1,14 +1,14 @@
 <script setup lang="ts">
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
-  import PrimaryButton from './PrimaryButton.vue';
+  import PrimaryButton from './PrimaryButton.vue'; // Importa o botão primario
 
-  import logo from '../../images/logo_hr.svg';
+  import logo from '../../images/logo_hr.svg'; // Importa a logo
 
-  import { computed } from 'vue';
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
   const cart = useCartStore(); // Instancia o carrinho
 
-  const hasItems = computed(() => cart.items.length > 0);
+  const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho
 
   // Soma todos os itens do carrinho
   const cartItens = computed(() => {

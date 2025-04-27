@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import AddItemButton from './AddItemButton.vue';
-import RemoveItemButton from './RemoveItemButton.vue';
+import AddItemButton from './AddItemButton.vue'; // Importa o botão de adicionar itens
+import RemoveItemButton from './RemoveItemButton.vue'; // Importa o botão de remover itens
 
+// Recebe o produto
 defineProps<{
   product: {
     id: number;
