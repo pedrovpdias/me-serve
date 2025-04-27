@@ -34,7 +34,7 @@
 
 <template>
   <section class="grid gap-4">
-    <Subtitle :text="category.name">
+    <Subtitle :text="category.name" :id="(category.name).toLowerCase()">
       <template #icon>
         <i class="bi bi-grid-fill text-sm"></i>
       </template>

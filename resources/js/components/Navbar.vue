@@ -12,16 +12,16 @@
 </script>
 
 <template>
-  <div class="grid gap-8">
-    <nav class="flex justify-between items-end px-4">
+  <header class="grid gap-8" id="header">
+    <nav class="flex justify-between items-end">
       <img :src="logo" alt="Logo" class="w-1/5">
 
       <CartButton v-if="isHome" />
       
     </nav>
 
-    <hr class="border-1 border-red-600 mx-4">
-  </div>
+    <hr class="border-1 border-red-600">
+  </header>
 </template>
 
 <script lang="ts">

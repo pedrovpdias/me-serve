@@ -1,19 +1,12 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue';
-  import axios from 'axios';
   import CategorySection from './CategorySection.vue';
 
-  interface Category {
-    id: number;
-    name: string;
-  }
-  const categories = ref<Category[]>([]);
-
-
-  onMounted(async () => {
-    const { data } = await axios.get('/api/categories');
-    categories.value = data;
-  });
+  const { categories } = defineProps<{
+    categories: {
+      id: number,
+      name: string,
+    }[]
+  }>();
 
 </script>
 

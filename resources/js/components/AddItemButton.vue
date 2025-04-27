@@ -12,7 +12,7 @@
   <button
     @click="cart.addItem(product)"
     type="button"
-    class="size-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-secondary/50 focus:bg-secondary/50 active:shadow-inner flex-none"
+    class="size-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-red-400/5 focus:bg-red-400/5 active:shadow-inner flex-none"
   >
     <i class="bi bi-plus"></i>
   </button>
