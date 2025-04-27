@@ -35,7 +35,7 @@
       <img :src="logo" alt="Logo" class="w-1/6 h-auto justify-self-start" tabindex="-1">
 
       <div class="flex justify-end">
-        <PrimaryButton :text="'Finalizar compra'" :event="'/cart'" />
+        <PrimaryButton :text="'Concluir a compra'" :event="'/cart'" />
       </div>
     </div>
 

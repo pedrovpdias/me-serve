@@ -4,6 +4,7 @@
   import EmptyCartMessage from './EmptyCartMessage.vue'; // Importa a mensagem de carrinho vazio
   import BackHomeAnchor from './BackHomeAnchor.vue'; // Importa o link para voltar para a home
   import CartItemCounter from './CartItemCounter.vue'; // Importa os botões de adicionar e remover itens & o contador de itens
+  import ProductThumbnail from './ProductThumbnail.vue'; // Importa o card de produto
 
   import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
@@ -24,9 +25,7 @@
         :key="product.id" 
         class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4"
       >
-        <div class="grid place-content-center rounded-lg overflow-hidden size-18 aspect-square flex-none bg-secondary shadow flex-none p-2">
-          <img :src="product.thumbnail" :alt="product.name" class="w-auto h-full max-h-16" loading="lazy">
-        </div>
+        <ProductThumbnail :product="product" />
 
         <div class="grid w-full gap-0 flex-1">
           <h3 class="text-lg font-bold font-highlight">
