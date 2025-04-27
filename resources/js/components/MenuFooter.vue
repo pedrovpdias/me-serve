@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
+  import { useCartStore } from '../stores/userCartStore.js'; // Importa o carrinho
   import PrimaryButton from './PrimaryButton.vue'; // Importa o botão primario
 
   import logo from '../../images/logo_hr.svg'; // Importa a logo

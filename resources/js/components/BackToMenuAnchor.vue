@@ -7,7 +7,7 @@
 
 <template>
   <button
-    @click="$router.push('/')"
+    @click="$router.push('/menu')"
     class="flex items-center gap-1 font-bold outline-none text-red-600 hover:text-red-800 focus:text-red-800 group"
   >
     <i class="bi bi-arrow-left-short"></i>
@@ -20,6 +20,6 @@
 
 <script lang="ts">
   export default {
-    name: 'BackHomeAnchor'
+    name: 'BackToMenuAnchor'
   }
 </script>

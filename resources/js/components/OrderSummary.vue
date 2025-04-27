@@ -49,11 +49,7 @@
       <DefaultButton
         :text="'Fechar pedido'"
         :event="'/payment'"
-      >
-        <template #icon>
-          <i class="bi bi-check-circle text-sm"></i>
-        </template>
-      </DefaultButton>
+      />
     </div>
 
     <Anchor

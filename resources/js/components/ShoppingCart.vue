@@ -2,7 +2,7 @@
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
   import Subtitle from './Subtitle.vue'; // Importa o sub-título
   import EmptyCartMessage from './EmptyCartMessage.vue'; // Importa a mensagem de carrinho vazio
-  import BackHomeAnchor from './BackHomeAnchor.vue'; // Importa o link para voltar para a home
+  import BackToMenuAnchor from './BackToMenuAnchor.vue'; // Importa o link para voltar para a home
   import CartItemCounter from './CartItemCounter.vue'; // Importa os botões de adicionar e remover itens & o contador de itens
   import ProductThumbnail from './ProductThumbnail.vue'; // Importa o card de produto
 
@@ -51,7 +51,7 @@
       v-if="hasItems"
       class="flex justify-end"
     >
-      <BackHomeAnchor :text="'Continuar comprando'" />
+      <BackToMenuAnchor :text="'Continuar comprando'" />
     </div>
   </section>
 </template>

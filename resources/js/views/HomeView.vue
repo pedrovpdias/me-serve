@@ -1,53 +1,65 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue'; // Importa o navbar
-  import Title from '../components/Title.vue'; // Importa o título
-  import CategoriesMenu from '../components/CategoriesMenu.vue'; // Importa o menu de categorias
-  import Menu from '../components/Menu.vue'; // Importa o Cardápio
-  import HomeFooter from '../components/HomeFooter.vue'; // Importa o footer com o carrinho
-  import PopupCartButton from '../components/PopupCartButton.vue'; // Importa o popup do carrinho (botão no canto inferior direito)
-  
-  import { ref, onMounted } from 'vue'; // Importa as bibliotecas do Vue
-  import axios from 'axios'; // Importa o axios
-
-  // Interfaces
-  interface Category {
-    id: number;
-    name: string;
-  }
-  const categories = ref<Category[]>([]); // Categorias do cardápio
-
-  // Busca as categorias do cardápio
-  onMounted(async () => {
-    const { data } = await axios.get('/api/categories');
-    categories.value = data;
-  });
-
+  import Navbar from '../components/Navbar.vue';
+  import Title from '../components/Title.vue';
+  import Subtitle from '../components/Subtitle.vue';
+  import DefaultButton from '../components/DefaultButton.vue';
 </script>
 
 <template>
   <main class="grid gap-4 relative">
     <Navbar />
 
-    <section class="grid">
+    <section class="grid gap-8">
+      <Title :text="'Bem-vindo(a)'" />
+
       <div class="grid gap-2">
-        <div class="grid gap-px">
-          <Title :text="'Cardápio'" />
+        <span class="">
+          Olá, seja bem-vindo(a) ao nosso cardápio virtual!
+        </span>
+
+        <span class="">
+          Aqui você pode escolher os itens desejados e adicionar ao seu pedido.
+        </span>
+      </div>
+
+      <div class="grid gap-2">
+        <Subtitle :text="'Identificação do cliente'" />
+
+        <div class="grid gap-2">
+          <label for="name" class=" font-semibold">
+            Nome do cliente
+          </label>
+
+          <input 
+            type="text" 
+            placeholder="Digite o seu nome" 
+            id="name" name="name"
+            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+            autocomplete="off"
+          />
 
           <span class="text-sm opacity-80">
-            Escolha o item desejado e clique em "Adicionar"
+            O painel exibirá este nome quando seu pedido estiver pronto para retirada.
           </span>
         </div>
 
-        <CategoriesMenu :categories="categories" />
+        <div class="flex justify-end">
+          <DefaultButton :text="'Iniciar pedido'" :event="'/menu'" />
+        </div>
+
       </div>
 
-      <div class="pt-2">
-        <Menu :categories="categories" />
+      <div class="grid justify-center">
+        <span class="text-sm">
+          Obrigado pela preferência e volte sempre!
+        </span>
+
+        <span class="text-center text-2xl text-amber-500">
+          <i class="bi bi-emoji-smile"></i>
+        </span>
       </div>
     </section>
 
-    <PopupCartButton />
-
-    <HomeFooter />
+    
   </main>
 </template>
