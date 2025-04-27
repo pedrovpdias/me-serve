@@ -1,13 +1,40 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue';
-  import Title from '../components/Title.vue';
-  import Subtitle from '../components/Subtitle.vue';
-  import DefaultButton from '../components/DefaultButton.vue';
+  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import Title from '../components/Title.vue'; // Importa o título
+  import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
+  import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
+  import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
+
+  import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
+
+  import { ref } from 'vue'; // Importa as bibliotecas do Vue
+
+  import { useRouter } from 'vue-router'; // Importa o router
+  const router = useRouter(); // Instancia o router
+
+  const customer = useCustomerStore(); // Instancia o usuario
+  const name = ref(''); // Define o nome como vazio
+
+  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
+
+  function createCustomer() {
+
+    if(name.value.trim()) {
+      customer.setName({ name: name.value });
+      router.push('/menu');
+    }
+    else {
+      toastErrorRef.value?.showToast('Por favor, digite o seu nome!');
+    }
+  }
+
 </script>
 
 <template>
   <main class="grid gap-4 relative">
     <Navbar />
+
+    <ToastError ref="toastErrorRef" />
 
     <section class="grid gap-8">
       <Title :text="'Bem-vindo(a)'" />
@@ -34,6 +61,7 @@
             type="text" 
             placeholder="Digite o seu nome" 
             id="name" name="name"
+            v-model="name"
             class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
             autocomplete="off"
           />
@@ -44,7 +72,7 @@
         </div>
 
         <div class="flex justify-end">
-          <DefaultButton :text="'Iniciar pedido'" :event="'/menu'" />
+          <DefaultButton :text="'Iniciar pedido'" :event="() => createCustomer()" :disabled="!name.trim()" />
         </div>
 
       </div>

@@ -2,13 +2,11 @@
   import { useRouter } from 'vue-router'; // Importa o Vue Router
 
   // Recebe o texto e o evento a ser executado ao clicar no botão
-  const { text, event, disabled } = withDefaults(defineProps<{
+  const { text, event, disabled = false } = defineProps<{
     text: string;
     event: string | (() => void);
     disabled?: boolean;
-  }>(), {
-    disabled: false
-  });
+  }>();
   
   const router = useRouter(); // Instancia o Vue Router
 

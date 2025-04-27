@@ -1,13 +1,18 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue';
-  import Title from '../components/Title.vue';
-  import Subtitle from '../components/Subtitle.vue';
-  import DefaultButton from '../components/DefaultButton.vue';
-  import ProductThumbnail from '../components/ProductThumbnail.vue';
-  import EmptyCartMessage from '../components/EmptyCartMessage.vue';
+  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import Title from '../components/Title.vue'; // Importa o título
+  import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
+  import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
+  import ProductThumbnail from '../components/ProductThumbnail.vue'; // Importa o card de produto
+  import EmptyCartMessage from '../components/EmptyCartMessage.vue'; // Importa a mensagem de carrinho vazio
+
+  import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
 
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
   import { computed } from 'vue'; // Importa as bibliotecas do Vue
+
+  const customers = useCustomerStore(); // Instancia o usuario
+  const customer = computed(() => customers.customer[0]);
 
   const cart = useCartStore(); // Instancia o carrinho
   const products = computed(() => cart.items); // Itens do carrinho
@@ -28,17 +33,9 @@
         <Subtitle :text="'Identificação do cliente'" />
 
         <div class="grid gap-2">
-          <label for="name">
-            Nome do cliente
-          </label>
-
-          <input 
-            type="text" 
-            placeholder="Digite o seu nome" 
-            id="name" name="name"
-            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
-            autocomplete="off"
-          />
+          <span class="text-lg flex items-end gap-2 font-highlight">
+            Nome do cliente: <strong>{{ customer.name }}</strong>
+          </span>
 
           <span class="text-sm opacity-80">
             O painel exibirá este nome quando seu pedido estiver pronto para retirada.

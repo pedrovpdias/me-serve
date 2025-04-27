@@ -1,24 +1,24 @@
 import {  defineStore } from 'pinia';
 
-export const useCostumerStore = defineStore('costumer', {
+export const useCustomerStore = defineStore('customer', {
   state: () => ({
-    costumer: [] as Array<{
+    customer: [] as Array<{
       name: string;
     }>
   }),
 
   actions: {
     // Define o nome do cliente
-    setName(costumer: {
+    setName(customer: {
       name: string;
     })
     {
-      this.costumer.push(costumer);
+      this.customer.push(customer);
     },
 
     // Limpa o nome do cliente
     clearName() {
-      this.costumer = [];
+      this.customer = [];
     }
   }
 });

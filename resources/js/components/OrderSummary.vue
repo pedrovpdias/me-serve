@@ -55,7 +55,7 @@
     <Anchor
       v-else
       :text="'Retornar ao cardápio'"
-      :event="'/'"
+      :event="'/menu'"
     />
   </section>
 </template>
