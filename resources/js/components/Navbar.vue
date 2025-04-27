@@ -7,7 +7,7 @@
   const route = useRoute(); // Instancia as rotas
 
   // Verifica se a rota atual é a home
-  const isHome = computed(() => route.name === 'home');
+  const isHome = computed(() => route.name === 'menu');
 
 </script>
 
