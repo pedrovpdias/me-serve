@@ -36,7 +36,7 @@
   function finishOrder() {
     // Verifica se a forma de pagamento foi selecionada
     if (!paymentMethod.value) {
-      toastErrorRef.value?.showToast('Por favor, selecione uma forma de pagamento para prosseguir.'); // Exibe o toast de erro
+      toastErrorRef.value?.showToast('Por favor, selecione uma forma de pagamento.'); // Exibe o toast de erro
       return;
     }
 
@@ -114,7 +114,11 @@
         </div>
 
         <div class="grid gap-2">
-          <Subtitle :text="'Forma de pagamento'" /> 
+          <Subtitle :text="'Forma de pagamento'" />
+
+          <span class="text-sm opacity-80">
+            Selecione uma das formas de pagamento abaixo para finalizar o pedido.
+          </span>
 
           <ul class="w-full grid gap-4">
             <li class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4">

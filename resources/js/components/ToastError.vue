@@ -21,7 +21,7 @@
 <template>
   <div 
     v-if="visible" 
-    class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg shadow-lg border border-black/5 flex items-start gap-4 bg-white"
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-4 py-2 rounded-lg shadow-lg border border-black/5 flex items-start gap-4 bg-white text-sm"
   >
     <div class="text-red-600">
       <i class="bi bi-x-circle-fill"></i>
