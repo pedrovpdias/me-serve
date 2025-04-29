@@ -1,11 +1,13 @@
 <script setup lang="ts">
-  import Subtitle from './Subtitle.vue';
+  import Subtitle from './Subtitle.vue'; // Importa o sub-título
 
-  defineProps<{
-    customer: { 
-      name: string 
-    } 
-  }>();
+  import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
+
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
+
+  const customers = useCustomerStore(); // Instancia o usuario
+  const customer = computed(() => customers.customer[0]); // Define o nome do cliente
+
 </script>
 
 <template>
