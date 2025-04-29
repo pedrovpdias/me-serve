@@ -32,6 +32,8 @@
     }
   });
 
+  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
+
   // Função para iniciar a verificação do pagamento
   function startWaitingPayment() {
     // A cada 3 segundos consulta a API para verificar o pagamento
@@ -55,7 +57,7 @@
         }
         // Se data.status for 'pendente', continua aguardando
       } catch (error) {
-        console.error('Erro ao verificar pagamento:', error); // Em caso de erro, talvez mostrar uma mensagem de "Falha na conexão"
+        toastErrorRef.value?.showToast(`Erro ao verificar pagamento: ${error}`); // Em caso de erro, talvez mostrar uma mensagem de "Falha na conexão"
       }
     }, 3000);
   }
