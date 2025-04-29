@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="loader.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient11"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#dc2626;stop-opacity:1;"
+         offset="0"
+         id="stop11" />
+      <stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="0.94111466"
+         id="stop12" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient11"
+       id="linearGradient12"
+       x1="6.0060043"
+       y1="240.14021"
+       x2="506"
+       y2="240.14021"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(-1,0,0,1,512.003,15.859786)" />
+  </defs>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="color:#000000;fill:url(#linearGradient12);stroke-linecap:round;stroke-linejoin:bevel;-inkscape-stroke:none"
+       d="m 256.12019,21.416427 c 102.76295,0.04534 197.36154,63.893203 234.20899,163.162113 42.11136,113.45018 -3.02862,241.19528 -107.04884,302.83008 a 22.727249,22.727249 0 0 1 -31.13867,-7.9668 22.727249,22.727249 0 0 1 7.9668,-31.13867 C 445.44206,397.74068 482.2846,293.53203 447.71394,200.3969 413.14328,107.26176 317.34693,52.532452 219.78816,70.119552 122.22938,87.706651 51.458083,172.48502 51.458083,271.85979 A 22.727249,22.727249 0 0 1 28.729563,294.58635 22.727249,22.727249 0 0 1 6.0030026,271.85979 c 0,-121.03415 86.7672404,-225.030655 205.7206974,-246.474613 14.86919,-2.680495 29.71607,-3.975227 44.39649,-3.96875 z"
+       id="path1" />
+  </g>
+</svg>
