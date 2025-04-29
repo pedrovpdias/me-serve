@@ -17,28 +17,29 @@
   const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho
   const hasCustomer = computed(() => customers.customer.length > 0);
 
-  const paymentMethod = ref(''); // Define a forma de pagamento como vazia
   const router = useRouter(); // Instancia o router
 
   const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
 
-
   //let btnDisabled = computed(() => !hasItems.value);
   let btnDisabled = computed(() => !hasCustomer.value || !hasItems.value);
 
+  // Recebe a forma de pagamento como parâmetro
+  const { paymentMethod } = defineProps<{ paymentMethod: string }>();
+
   // Função para finalizar pedido e ir para pagamento
-  function finishOrder() {
+  function finishOrder() { console.log('paymentMethod:', paymentMethod);
     // Verifica se a forma de pagamento foi selecionada
-    if (!paymentMethod.value) {
+    if (!paymentMethod) {
       toastErrorRef.value?.showToast('Por favor, selecione uma forma de pagamento.'); // Exibe o toast de erro
       return;
     }
 
-    // Redireciona para a tela de pagamento com a forma de pagamento como parâmetro
-    router.push({
+  // Redireciona para a tela de pagamento com a forma de pagamento como parâmetro
+  router.push({
       name: 'payment',
       params: { 
-        paymentMethod: paymentMethod.value 
+        paymentMethod: paymentMethod 
       }
     });
   }

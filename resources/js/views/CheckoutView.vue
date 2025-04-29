@@ -4,18 +4,16 @@
   import CustomerIdentificationSection from '../components/CustomerIdentificationSection.vue'; // Importa a seção de identificação do cliente
   import OrderConfirmation from '../components/OrderConfirmation.vue'; // Importa o resumo do pedido
   import PaymentMethod from '../components/PaymentMethod.vue'; // Importa as formas de pagamento
+  import FinishOrderSection from '../components/FinishOrderSection.vue'; // Importa o botão de finalizar pedido
 
   import {  ref } from 'vue'; // Importa as bibliotecas do Vue
 
   // Cria o estado para armazenar a forma de pagamento
   const paymentMethod = ref(''); // Define a forma de pagamento como vazia
 
-  const selectedPaymentMethod = ref(''); // Define a forma de pagamento selecionada como vazia
-
   // Função para lidar com o evento de mudança na forma de pagamento
   const handlePaymentMethodChange = (newPaymentMethod: string) => {
     paymentMethod.value = newPaymentMethod;
-    console.log('Forma de pagamento selecionada:', newPaymentMethod);
   };
   
 </script>
@@ -31,9 +29,9 @@
 
       <OrderConfirmation />
 
-      <PaymentMethod :paymentMethod="selectedPaymentMethod" @payment-method-changed="handlePaymentMethodChange" />
+      <PaymentMethod @payment-method-changed="handlePaymentMethodChange" />
 
-      //
+      <FinishOrderSection :paymentMethod="paymentMethod" />
     </main>
   </div>
 </template>
