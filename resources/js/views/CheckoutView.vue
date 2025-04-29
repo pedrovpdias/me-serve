@@ -6,6 +6,7 @@
   import ProductThumbnail from '../components/ProductThumbnail.vue'; // Importa o card de produto
   import EmptyCartMessage from '../components/EmptyCartMessage.vue'; // Importa a mensagem de carrinho vazio
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
+  import CustomerIdentificationSection from '../components/CustomerIdentificationSection.vue';
 
   import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
 
@@ -60,20 +61,7 @@
     <main class="grid gap-8">
       <Title :text="'Confirmar pedido'" />
 
-      <div class="grid gap-2">
-        <Subtitle :text="'Identificação do cliente'" />
-
-        <div class="grid gap-2">
-          <span class="text-lg flex items-end gap-2 font-highlight">
-            Nome do cliente: <strong>{{ customer ? customer.name : 'N/A' }}</strong>
-          </span>
-
-          <span class="text-sm opacity-80">
-            O painel exibirá este nome quando seu pedido estiver pronto para retirada.
-          </span>
-        </div>
-
-      </div>
+      <CustomerIdentificationSection :customer="customer" />
 
       <div class="grid gap-4">
         <div class="grid gap-2">
