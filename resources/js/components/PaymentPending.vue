@@ -54,7 +54,7 @@
 
     <div v-if="paymentMethod === 'pix'" class="grid gap-4">
       <div class="justify-self-center size-fit aspect-square flex-none ">
-        <QRCodeVue :value="pixCode" :size="300" />
+        <QRCodeVue :value="pixCode" :size="200" />
       </div>
 
       <div class="grid gap-2">
