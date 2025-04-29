@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import Subtitle from './Subtitle.vue';
+
   defineProps<{
     customer: { 
       name: string 
