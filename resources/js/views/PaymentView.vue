@@ -125,9 +125,7 @@
               Código Copia e Cola:
             </label>
 
-            <textarea id="qr-code" rows="4" readonly class="bg-secondary/50 rounded-lg text-sm resize-none shadow-inner w-full z-0 outline-none px-4">
-              {{ pixCode }}
-            </textarea>
+            <textarea id="qr-code" rows="2" readonly class="bg-secondary/50 rounded-lg text-sm resize-none shadow-inner w-full z-0 outline-none p-4" v-model="pixCode"></textarea>
           </div>
         </div>
       </div>
