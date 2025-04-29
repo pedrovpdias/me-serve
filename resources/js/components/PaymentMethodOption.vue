@@ -22,7 +22,7 @@
 <template>
   <div class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4">
     <div class="grid w-full gap-0 flex-1">
-      <label for="credit" class="text-lg font-bold font-highlight flex items-center gap-2">
+      <label :for="value" class="text-lg font-bold font-highlight flex items-center gap-2">
         <input type="radio" name="payment" :id="value" :value="value" class="accent-red-600" @change="emitPaymentMethod">
         
         {{ name }}
