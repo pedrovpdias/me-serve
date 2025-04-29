@@ -28,7 +28,7 @@
   const { paymentMethod } = defineProps<{ paymentMethod: string }>();
 
   // Função para finalizar pedido e ir para pagamento
-  function finishOrder() { console.log('paymentMethod:', paymentMethod);
+  function finishOrder() {
     // Verifica se a forma de pagamento foi selecionada
     if (!paymentMethod) {
       toastErrorRef.value?.showToast('Por favor, selecione uma forma de pagamento.'); // Exibe o toast de erro
