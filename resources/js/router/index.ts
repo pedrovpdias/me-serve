@@ -5,8 +5,8 @@ import { createRouter, createWebHistory } from 'vue-router'; // Importa o Vue Ro
 import HomeView from '@/views/HomeView.vue'; // Importa a view Home
 import MenuView from '@/views/MenuView.vue'; // Importa a view Menu
 import CartView from '@/views/CartView.vue'; // Importa a view Cart
-import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
 import CheckoutView from '@/views/CheckoutView.vue'; // Importa a view Checkout
+import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
 
 // Cria o roteador
 const router = createRouter({
@@ -28,14 +28,15 @@ const router = createRouter({
       component: CartView,
     },
     {
-      path: '/payment',
-      name: 'payment',
-      component: PaymentView,
-    },
-    {
       path: '/checkout',
       name: 'checkout',
       component: CheckoutView,
+    },
+    {
+      path: '/payment/:paymentMethod',
+      name: 'payment',
+      component: PaymentView,
+      props: true,
     },
   ],
 });

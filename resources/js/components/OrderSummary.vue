@@ -48,7 +48,7 @@
 
       <DefaultButton
         :text="'Fechar pedido'"
-        :event="'/payment'"
+        :event="'/checkout'"
       />
     </div>
 
