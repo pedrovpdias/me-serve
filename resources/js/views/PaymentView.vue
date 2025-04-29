@@ -2,9 +2,10 @@
   import Navbar from '../components/Navbar.vue'; // Importa o navbar
   import Title from '../components/Title.vue'; // Importa o título
   import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
-  import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
   import PaymentPending from '../components/PaymentPending.vue'; // Importa a seção de pagamento pendente
+
+  import PaymentFailure from '../components/PaymentFailure.vue';
 
   import { defineProps, ref, onMounted, onUnmounted  } from 'vue'; // Importa as bibliotecas do Vue
 
@@ -57,7 +58,7 @@
       } catch (error) {
         console.error('Erro ao verificar pagamento:', error); // Em caso de erro, talvez mostrar uma mensagem de "Falha na conexão"
       }
-    }, 10000);
+    }, 3000);
   }
 
   // Função para realizar uma nova tentativa de pagamento
@@ -100,33 +101,7 @@
         </p>
       </div>
 
-      <div v-else-if="status === 'recusado'" class="flex flex-col w-full gap-4">
-        <div>
-          <div class="flex items-center gap-4">
-            <Subtitle :text="'Pagamento recusado!'" />
-
-            <span class="text-xl text-red-500">
-              <i class="bi bi-x-circle"></i>
-            </span>
-          </div>
-
-          <p class="text-sm opacity-80">
-            Seu pagamento não foi aprovado.
-          </p>
-        </div>
-
-        <p>
-          Tente novamente ou procure um dos nosso atendentes.
-        </p>
-
-        <div class="w-fit self-center mt-10">
-          <DefaultButton :text="'Tentar novamente'" :event="tryNewPayment">
-            <template #icon>
-              <i class="bi bi-arrow-counterclockwise"></i>
-            </template>
-          </DefaultButton>
-        </div>
-      </div>
+      <PaymentFailure v-else-if="status === 'recusado'" @try-new-payment="tryNewPayment" />
 
   </main>
 </template>
