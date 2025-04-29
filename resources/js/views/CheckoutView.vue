@@ -1,12 +1,12 @@
 <script setup lang="ts">
   import Navbar from '../components/Navbar.vue'; // Importa o navbar
   import Title from '../components/Title.vue'; // Importa o título
-  import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
   import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
-  import CustomerIdentificationSection from '../components/CustomerIdentificationSection.vue';
-  import OrderConfirmation from '../components/OrderConfirmation.vue';
-
+  import CustomerIdentificationSection from '../components/CustomerIdentificationSection.vue'; // Importa a seção de identificação do cliente
+  import OrderConfirmation from '../components/OrderConfirmation.vue'; // Importa o resumo do pedido
+  import PaymentMethod from '../components/PaymentMethod.vue'; // Importa as formas de pagamento
+  
   import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
 
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
@@ -48,6 +48,14 @@
       }
     });
   }
+
+  const selectedPaymentMethod = ref(''); // Define a forma de pagamento selecionada como vazia
+
+  // Função para lidar com o evento de mudança na forma de pagamento
+  const handlePaymentMethodChange = (newPaymentMethod: string) => {
+    paymentMethod.value = newPaymentMethod;
+    console.log('Forma de pagamento selecionada:', newPaymentMethod);
+  };
   
 </script>
 
@@ -64,64 +72,15 @@
 
       <OrderConfirmation :products="products" />
 
-        <div class="grid gap-2">
-          <Subtitle :text="'Forma de pagamento'" />
+      <PaymentMethod :paymentMethod="selectedPaymentMethod" @payment-method-changed="handlePaymentMethodChange" />
 
-          <span class="text-sm opacity-80">
-            Selecione uma das formas de pagamento abaixo para finalizar o pedido.
-          </span>
-
-          <ul class="w-full grid gap-4">
-            <li class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4">
-              <div class="grid w-full gap-0 flex-1">
-                <label for="pix" class="text-lg font-bold font-highlight flex items-center gap-2">                  
-                  <input type="radio" name="payment" id="pix" value="pix" class="accent-red-600" v-model="paymentMethod">
-
-                  Pix
-                </label >
-              </div>
-
-              <span class="text-sm font-bold text-lg pt-2">
-                R$ {{ cart.total.toFixed(2) }}
-              </span>
-            </li>
-
-            <li class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4">
-              <div class="grid w-full gap-0 flex-1">
-                <label for="credit" class="text-lg font-bold font-highlight flex items-center gap-2">
-                  <input type="radio" name="payment" id="credit" value="credit" class="accent-red-600" v-model="paymentMethod">
-                  Cartão de crédito
-                </label >
-              </div>
-
-              <span class="text-sm font-bold text-lg pt-2">
-                R$ {{ cart.total.toFixed(2) }}
-              </span>
-            </li>
-
-            <li class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4">
-              <div class="grid w-full gap-0 flex-1">
-                <label for="debit" class="text-lg font-bold font-highlight flex items-center gap-2">
-                  <input type="radio" name="payment" id="debit" value="debit" class="accent-red-600" v-model="paymentMethod">
-
-                  Cartão de debito
-                </label >
-              </div>
-
-              <span class="text-sm font-bold text-lg pt-2">
-                R$ {{ cart.total.toFixed(2) }}
-              </span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="grid gap-4 justify-end">
+        <section class="grid gap-4 justify-end">
           <DefaultButton :text="'Finalizar pedido'" :disabled="btnDisabled" :event="finishOrder" />
 
           <p class="text-sm opacity-80">
             Ao finalizar o pedido você concorda com os termos de uso e política de privacidade.
           </p>
-        </div>
+        </section>
     </main>
   </div>
 </template>
