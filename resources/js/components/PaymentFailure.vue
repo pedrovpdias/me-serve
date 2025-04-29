@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import Subtitle from './Subtitle.vue'; // Importa o sub-título
   import DefaultButton from './DefaultButton.vue'; // Importa o botão padrão
 
   const emit = defineEmits(['tryNewPayment']); // Define o emit para tentar novamente
@@ -24,11 +25,11 @@
       Tente novamente ou procure um dos nosso atendentes.
     </p>
 
-    <span class="text-6xl text-red-500 self-center py-12">
+    <span class="text-6xl text-red-500 self-center py-8">
       <i class="bi bi-x-circle"></i>
     </span>
 
-    <div class="w-fit self-center mt-10">
+    <div class="w-fit self-center mt-4">
       <DefaultButton :text="'Tentar novamente'" :event="tryNewPayment">
         <template #icon>
           <i class="bi bi-arrow-counterclockwise"></i>

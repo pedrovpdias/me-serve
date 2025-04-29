@@ -1,11 +1,10 @@
 <script setup lang="ts">
   import Navbar from '../components/Navbar.vue'; // Importa o navbar
   import Title from '../components/Title.vue'; // Importa o título
-  import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
   import PaymentPending from '../components/PaymentPending.vue'; // Importa a seção de pagamento pendente
-
-  import PaymentFailure from '../components/PaymentFailure.vue';
+  import PaymentSuccess from '../components/PaymentSuccess.vue'; // Importa a seção de pagamento aprovado
+  import PaymentFailure from '../components/PaymentFailure.vue'; // Importa a seção de pagamento recusado
 
   import { defineProps, ref, onMounted, onUnmounted  } from 'vue'; // Importa as bibliotecas do Vue
 
@@ -80,28 +79,9 @@
 
     <PaymentPending v-if="status === 'aguardando'" :paymentMethod="paymentMethod" />
       
+    <PaymentSuccess v-else-if="status === 'aprovado'" />    
 
-      <div v-else-if="status === 'aprovado'" class="grid gap-4 items-center">
-        <div>
-          <div class="flex items-center gap-4">
-            <Subtitle :text="'Pagamento aprovado!'" />
-
-            <span class="text-xl text-green-500">
-              <i class="bi bi-check-circle"></i>
-            </span>
-          </div>
-
-          <p class="text-sm opacity-80">
-            Seu pagamento foi aprovado com sucesso!
-          </p>
-        </div>
-
-        <p>
-          Aguarde alguns instantes enquanto finalizamos seu pedido.
-        </p>
-      </div>
-
-      <PaymentFailure v-else-if="status === 'recusado'" @try-new-payment="tryNewPayment" />
+    <PaymentFailure v-else-if="status === 'recusado'" @try-new-payment="tryNewPayment" />
 
   </main>
 </template>
