@@ -11,7 +11,7 @@
     return cart.items.reduce((total, item) => total + item.quantity, 0);
   });
 
-  const totalItens = computed(() => cartItens.value);
+  const totalItens = computed(() => cartItens.value); // Soma todas as quantidades dos itens do carrinho
 
 </script>
 

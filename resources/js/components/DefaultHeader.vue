@@ -11,7 +11,7 @@
   // Verifica se a rota atual é a home
   const isHome = computed(() => route.name === 'home');
 
-  // Pega a rota anterior
+  // Recebe a rota anterior como parâmetro para o botão de voltar
   const { previousRoute } = defineProps<{ 
     previousRoute: string 
   }>();

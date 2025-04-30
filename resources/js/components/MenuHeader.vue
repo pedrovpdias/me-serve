@@ -1,24 +1,27 @@
 <script setup lang="ts">
-  import CartButton from './CartButton.vue';
-  import BackButton from './BackButton.vue';
+  import CartButton from './CartButton.vue'; // Importa o botão de carrinho
+  import BackButton from './BackButton.vue'; // Importa o botão de voltar
 
-  import { ref, onMounted, onUnmounted } from 'vue';
+  import { ref, onMounted, onUnmounted } from 'vue'; // Importa as bibliotecas do Vue
 
-  import background from '../../images/restaurant_facade.png';
+  import background from '../../images/restaurant_facade.png'; // Importa o background do header
 
-  const isCollapsed = ref(false);
-  const scrollThreshold = 10;
+  const isCollapsed = ref(false); // Define a visibilidade do header
+  const scrollThreshold = 100; // Define o threshold de scroll
 
+  // Função para lidar com o scroll
   const handleScroll = () => {
-    isCollapsed.value = window.scrollY > scrollThreshold;
+    isCollapsed.value = window.scrollY > scrollThreshold; // Se o scroll for maior que o threshold, define a visibilidade como true
   };
 
+  // Quando o componente for montado
   onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll); // Adiciona o listener de scroll
   });
 
+  // Quando o componente for desmontado
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('scroll', handleScroll); // Remove o listener de scroll
   });
 
 
