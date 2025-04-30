@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <section class="grid gap-2">
+  <section class="grid gap-4">
     <Subtitle :text="'Forma de pagamento'" />
 
     <span class="text-sm opacity-80">

@@ -31,7 +31,7 @@
 </script>
 
 <template>
-  <main class="grid gap-4 relative px-8">
+  <main class="grid gap-4 relative px-4 md:px-8">
     <DefaultHeader :previousRoute="''" />
 
     <ToastError ref="toastErrorRef" />

@@ -14,7 +14,7 @@
 </script>
 
 <template>
-  <section class="grid gap-2">
+  <section class="grid gap-8 md:gap-4">
     <div class="w-full flex items-end justify-between">
       <Subtitle :text="'Itens do pedido'" /> 
 

@@ -42,7 +42,7 @@
       </template>
     </Subtitle>
 
-    <div class="py-4 grid grid-cols-2 gap-4">
+    <div class="py-4 grid grid-cols-1 md:grid-cols-2 gap-4">
       <ProductCard
         v-for="product in products"
         :key="product.id"

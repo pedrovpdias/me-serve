@@ -10,7 +10,7 @@
   <div class="grid gap-8 relative">
     <CartHeader />
 
-    <main class="grid gap-8 z-20 bg-white p-8 -mt-20 rounded-tl-3xl rounded-tr-3xl -mx-px sticky top-80 border-t border-t-black/5">
+    <main class="grid gap-8 z-20 bg-white p-8 -mt-30 md:-mt-20 rounded-tl-3xl rounded-tr-3xl -mx-px sticky top-80 border-t border-t-black/5">
       <Title :text="'Pedido'" />
 
       <ShoppingCart />

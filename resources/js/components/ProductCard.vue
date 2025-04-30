@@ -39,7 +39,7 @@
 <template>
   <div class="rounded-xl shadow bg-white flex flex-col overflow-hidden items-start">
     <div class="w-full h-fit aspect-square mx-auto bg-secondary grid place-items-center rounder-tl-xl rounder-tr-xl py-4">
-      <img :src="product.thumbnail" :alt="product.name" class="w-auto h-full max-h-80" loading="lazy" />
+      <img :src="product.thumbnail" :alt="product.name" class="w-auto h-full max-h-72 md:max-h-80" loading="lazy" />
     </div>
     
     <div class="py-4 px-8 flex gap-2 flex-col justify-between size-full grow">

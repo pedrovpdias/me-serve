@@ -28,7 +28,7 @@
   <main class="grid relative">
     <MenuHeader />
 
-    <section class="grid z-20 bg-white p-8 -mt-10 rounded-tl-3xl rounded-tr-3xl -mx-px sticky top-80 border-t border-t-black/5">
+    <section class="grid z-20 bg-white p-4 md:p-8 -mt-20 md:-mt-10 rounded-tl-3xl rounded-tr-3xl -mx-px sticky border-t border-t-black/5 w-auto">
       <div class="grid gap-8">
         <div class="grid gap-px">
           <Title :text="'Cardápio'" />

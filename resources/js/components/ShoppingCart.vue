@@ -23,7 +23,7 @@
       <li
         v-for="product in products" 
         :key="product.id" 
-        class="flex w-full no-wrap gap-8 border-b border-primary/5 pb-4"
+        class="flex flex-col md:flex-row w-full no-wrap gap-8 border-b border-primary/5 pb-4"
       >
         <ProductThumbnail :product="product" />
 
@@ -49,7 +49,7 @@
 
     <div
       v-if="hasItems"
-      class="flex justify-end"
+      class="flex justify-end py-4"
     >
       <BackToMenuAnchor :text="'Continuar comprando'" />
     </div>

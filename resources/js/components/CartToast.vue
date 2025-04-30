@@ -18,7 +18,7 @@
   <div
     v-if="visible"
     class=""
-    :class="['fixed right-4 bg-white shadow rounded-lg px-6 py-4 flex items-center gap-4 z-50 overflow-hidden border border-black/10', hasItems ? 'bottom-20' : 'bottom-4']"
+    :class="['fixed right-4 bg-white shadow rounded-lg px-6 py-4 flex items-center gap-4 z-50 overflow-hidden border border-black/10', hasItems ? 'top-4 md:top-auto md:bottom-20' : 'bottom-4']"
   >
     <div class="text-red-600 text-xl relative before:content-[''] before:absolute before:-top-6 before:-bottom-6 before:-left-6 before:w-1 before:h-auto before:bg-red-600">
       <i class="bi bi-bag-check-fill"></i>

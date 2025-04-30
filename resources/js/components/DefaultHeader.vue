@@ -20,12 +20,12 @@
 
 <template>
   <header class="grid gap-8 py-8 z-0 relative" id="header">
-    <div v-if="!isHome" class="flex items-center h-fit w-full justify-start p-8 z-10 absolute top-0 left-0">
+    <div v-if="!isHome" class="flex items-center h-fit w-full justify-start p-4 md:p-8 z-10 absolute top-0 left-0">
       <BackButton :path="previousRoute" />
     </div>
 
     <div class="flex justify-center items-center">
-      <img :src="logo" alt="Logo" class="w-1/5">      
+      <img :src="logo" alt="Logo" class="w-1/3 md:w-1/5">      
     </div>
 
     <hr class="border-px border-red-600">

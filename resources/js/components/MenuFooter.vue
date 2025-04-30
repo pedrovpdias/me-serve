@@ -18,7 +18,7 @@
 </script>
 
 <template>
-  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-auto -mx-px rounded-xl shadow-xl bg-secondary border border-black/5">
+  <footer v-if="hasItems" class="grid grid-cols-2 p-8 sticky bottom-4 w-auto -mx-px rounded-xl shadow-xl bg-secondary border border-black/5 z-30">
     <h2 class="text-2xl font-red-600 font-black font-highlight col-span-2">
       Carrinho
     </h2>
@@ -27,12 +27,12 @@
       {{ cartItens }} {{ cartItens === 1 ? 'item' : 'itens' }}
     </span>
 
-    <span class="text-right font-bold text-xl">
+    <span class="md:text-right font-bold text-lg md:text-xl">
       Total: R$ {{ cart.total.toFixed(2) }}
     </span>
 
     <div class="col-span-2 flex justify-between pt-8">
-      <img :src="logo" alt="Logo" class="w-1/6 h-auto justify-self-start" tabindex="-1">
+      <img :src="logo" alt="Logo" class="w-1/3 md:w-1/6 h-auto justify-self-start" tabindex="-1">
 
       <div class="flex justify-end">
         <PrimaryButton :text="'Concluir a compra'" :event="'/cart'" />

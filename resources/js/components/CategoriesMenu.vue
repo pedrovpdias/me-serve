@@ -17,8 +17,8 @@
 </script>
 
 <template>
-  <div class="grid gap-2 w-full justify-end">
-    <h4 class="flex items-end gap-2 font-semibold font-highlight text-2xl px-4">
+  <div class="flex flex-col md:grid gap-2 w-full md:justify-end pb-4 md:pb-0">
+    <h4 class="flex items-end gap-2 font-semibold font-highlight text-2xl md:px-4">
       <span class="pb-1 text-base">
         <i class="bi bi-list"></i>
       </span>
@@ -26,9 +26,9 @@
       Menu
     </h4>
 
-    <ul class="flex gap-4 items-center">
-      <li v-for="category in categories" :key="category.id" class="grid place-content-center">
-        <button @click="scrollToCategory(category.name.toLowerCase())" class="text-sm px-4 py-2 rounded-full border border-primary/10 cursor-pointer transition-all hover:scale-105 focus:scale-105 font-semibold">
+    <ul class="flex flex-col md:flex-row gap-1 md:gap-4 md:items-center w-full md:w-fit">
+      <li v-for="category in categories" :key="category.id" class="grid md:place-content-center w-full md:w-fit">
+        <button @click="scrollToCategory(category.name.toLowerCase())" class="flex justify-start w-full md:w-fit text-sm px-4 py-2 md:rounded-full md:border border-primary/10 cursor-pointer transition-all hover:scale-105 focus:scale-105 font-semibold">
           {{ category.name }}
         </button>
       </li>

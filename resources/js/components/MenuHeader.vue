@@ -28,7 +28,7 @@
 </script>
 
 <template>
-  <header class="h-96 sticky top-0 realtive overflow-hidden">
+  <header class="h-64 md:h-96 sticky top-0 realtive overflow-hidden w-full">
     <img :src="background" alt="meServe" class="w-full h-auto object-cover absolute top-0 left-0 -z-10">
 
     <div
@@ -36,7 +36,7 @@
       :class="{ 'opacity-100 translate-y-0': isCollapsed, 'opacity-0 translate-y-[-100%]': !isCollapsed }"
     ></div>
 
-    <div class="flex items-center h-fit w-full justify-between p-8 z-10">
+    <div class="flex items-center h-fit w-full justify-between p-4 md:p-8 z-10">
       <BackButton :path="'/'" />
 
       <CartButton />
