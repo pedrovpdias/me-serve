@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import DefaultHeader from '../components/DefaultHeader.vue'; // Importa o DefaultHeader
   import Title from '../components/Title.vue'; // Importa o título
   import Subtitle from '../components/Subtitle.vue'; // Importa o sub-título
   import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
@@ -31,8 +31,8 @@
 </script>
 
 <template>
-  <main class="grid gap-4 relative">
-    <Navbar />
+  <main class="grid gap-4 relative px-8">
+    <DefaultHeader :previousRoute="''" />
 
     <ToastError ref="toastErrorRef" />
 

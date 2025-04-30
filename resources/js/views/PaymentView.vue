@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import DefaultHeader from '../components/DefaultHeader.vue'; // Importa o DefaultHeader
   import Title from '../components/Title.vue'; // Importa o título
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
   import PaymentPending from '../components/PaymentPending.vue'; // Importa a seção de pagamento pendente
@@ -72,8 +72,8 @@
 </script>
 
 <template>
-  <main class="grid gap-4 relative">
-    <Navbar />
+  <main class="grid gap-4 relative px-8">
+    <DefaultHeader :previousRoute="'/checkout'" />
 
     <ToastError ref="toastErrorRef" />
 

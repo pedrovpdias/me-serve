@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import DefaultHeader from '../components/DefaultHeader.vue'; // Importa o DefaultHeader
   import Title from '../components/Title.vue'; // Importa o título
   import CustomerIdentificationSection from '../components/CustomerIdentificationSection.vue'; // Importa a seção de identificação do cliente
   import OrderConfirmation from '../components/OrderConfirmation.vue'; // Importa o resumo do pedido
@@ -19,8 +19,8 @@
 </script>
 
 <template>
-  <div class="grid gap-8 relative">
-    <Navbar />
+  <div class="grid gap-8 relative px-8">
+    <DefaultHeader :previousRoute="'/cart'" />
 
     <main class="grid gap-4">
       <Title :text="'Confirmar pedido'" />
