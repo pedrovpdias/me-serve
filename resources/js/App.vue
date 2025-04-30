@@ -1,6 +1,6 @@
 <!-- resources/js/App.vue -->
 <template>
-  <div class="md:w-auto max-w-sm shrink md:flex-1 md:max-w-4xl mx-auto lg:px-4">
+  <div class="md:w-auto shrink md:flex-1 md:max-w-4xl mx-auto lg:px-4">
     <RouterView />
   </div>
 </template>
