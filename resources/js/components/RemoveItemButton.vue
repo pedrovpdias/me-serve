@@ -13,9 +13,9 @@
   <button
     @click="cart.removeItem(product.id)"
     type="button"
-    class="size-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-red-400/5 focus:bg-red-400/5 active:shadow-inner flex-none"
+    class="size-6 grid place-content-center shadow rounded text-red-600 outline-none hover:bg-gray-50 focus:bg-gray-50 transition-all active:shadow-inner flex-none"
   >
-    <i class="bi bi-dash"></i>
+    <i class="bi bi-dash pointer-events-none"></i>
   </button>
 </template>
 

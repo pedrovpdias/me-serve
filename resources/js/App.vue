@@ -12,8 +12,8 @@
   });
 
   // Remove o foco dos botões
-  window.addEventListener('click', e => {
-    const target = e.target as HTMLElement;
+  window.addEventListener('click', e => { 
+    const target = e.target as HTMLElement; console.log(target);
     if (target.tagName === 'BUTTON') {
       target.blur();
     }

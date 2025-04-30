@@ -63,7 +63,7 @@
           :event="() => addToCart(product)"
         >
           <template #icon>
-            <i class="bi bi-plus-circle text-sm"></i>
+            <i class="bi bi-plus-circle text-sm pointer-events-none"></i>
           </template>
         </DefaultButton>
       </div>

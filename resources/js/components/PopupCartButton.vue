@@ -10,7 +10,7 @@
 <template>
   <button v-if="hasItems">
     <router-link to="/cart" class="fixed bottom-4 right-4 bg-red-600 text-white grid place-content-center size-12 rounded-full shadow hover:bg-red-700 focus:bg-red-700 active:shadow-inner">
-      <i class="bi bi-bag-fill"></i>
+      <i class="bi bi-bag-fill pointer-events-none"></i>
 
       <span class="sr-only">
         Carrinho

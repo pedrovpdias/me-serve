@@ -19,7 +19,7 @@
       <Subtitle :text="'Itens do pedido'" /> 
 
       <button @click="$router.push('/cart')" class="group flex items-center gap-2 text-sm text-red-600 hover:text-red-800">
-        <i class="bi bi-bag"></i>
+        <i class="bi bi-bag pointer-events-none"></i>
 
         <span class="group-hover:underline">
           Alterar o pedido
