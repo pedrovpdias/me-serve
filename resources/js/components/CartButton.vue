@@ -6,6 +6,13 @@
   const cart = useCartStore(); // Instancia o carrinho
   const hasItems = computed(() => cart.items.length > 0); // Verifica se há itens no carrinho
 
+  // Soma todas as quantidades dos itens do carrinho
+  const cartItens = computed(() => {
+    return cart.items.reduce((total, item) => total + item.quantity, 0);
+  });
+
+  const totalItens = computed(() => cartItens.value);
+
 </script>
 
 <template>
@@ -16,7 +23,7 @@
     :disabled="!hasItems"
   >
     <span v-if="hasItems" class="absolute top-0 right-0 text-xs bg-red-600 text-white rounded-full w-4 h-4 flex justify-center items-center">
-      {{ cart.items.length }}
+      {{ totalItens }}
     </span>
 
     <i v-if="hasItems" class="bi bi-bag-fill pointer-events-none"></i>
