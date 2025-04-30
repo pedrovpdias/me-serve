@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Navbar from '../components/Navbar.vue'; // Importa o navbar
+  import MenuHeader from '../components/MenuHeader.vue'; // Importa o MenuHeader
   import Title from '../components/Title.vue'; // Importa o título
   import CategoriesMenu from '../components/CategoriesMenu.vue'; // Importa o menu de categorias
   import CategorySection from '../components/CategorySection.vue'; // Importa a seção de categoria
@@ -25,11 +25,11 @@
 </script>
 
 <template>
-  <main class="grid gap-4 relative">
-    <Navbar />
+  <main class="grid relative">
+    <MenuHeader />
 
-    <section class="grid">
-      <div class="grid gap-2">
+    <section class="grid z-20 bg-white p-8 -mt-10 rounded-tl-3xl rounded-tr-3xl -mx-px sticky top-80 border-t border-t-black/5">
+      <div class="grid gap-8">
         <div class="grid gap-px">
           <Title :text="'Cardápio'" />
 
