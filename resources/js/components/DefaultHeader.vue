@@ -20,7 +20,7 @@
 
 <template>
   <header class="grid gap-8 py-8 z-0 relative" id="header">
-    <div v-if="!isHome" class="flex items-center h-fit w-full justify-start p-4 md:p-8 z-10 absolute top-0 left-0">
+    <div v-if="!isHome" class="flex items-center h-fit w-full justify-start py-4 md:py-8 px-2 z-10 absolute top-0 left-0">
       <BackButton :path="previousRoute" />
     </div>
 

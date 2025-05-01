@@ -1,28 +1,37 @@
-# 🍔 meServe - Sistema de Autoatendimento
+# 🍔 meServe - Sistema de Autoatendimento para lanchonetes
 
-Este repositório contém o frontend (Vue 3) e backend (Laravel API) de um sistema de autoatendimento para lanchonetes, inspirado em totens como os do Burger King e McDonald's.
+**meServe** é um sistema de autoatendimento para lanchonetes, inspirado nos totens de redes como **Burger King** e **McDonald's**. Este repositório contém o **frontend (Vue 3)** e o **backend (Laravel API)** integrados, oferecendo uma experiência fluida do **cardápio ao pagamento**.
+
+🔗 Acesse: [https://meserve.laravel.cloud/](https://meserve.laravel.cloud/)
 
 ---
 
 ## ✨ Funcionalidades
 
 ### Backend Laravel (API de produtos)
-- CRUD de produtos com categorias
-- Proteção de rotas por autenticação (Sanctum + Fortify)
+
+- **CRUD** de produtos com categorias
+- Autenticação via **Sanctum** + **Fortify**
+- Proteção de rotas administrativas
 - Seeders com categorias e produtos de exemplo
+- Upload e exibição de imagens dos produtos
 
 ### Frontend Vue 3
-- Catálogo de produtos com imagens
-- Carrinho de compras com Pinia
-- Navegação entre etapas: Menu > Carrinho > Pagamento > Finalização
+
+- Cardápio de produtos dinâmico com imagens
+- Carrinho de compras persistente via **Pinia**
+- Animações e feedbacks visuais na finalização da compra
+- Layout responsivo com **Tailwind CSS**
+- Fluxo completo: Menu → Carrinho → Pagamento → Finalização
 
 ---
 
 ## 🚀 Como executar
 
 ### Backend (Laravel)
+
 ```bash
-cd laravel-api-produtos
+cd me-serve
 composer install
 cp .env.example .env
 php artisan key:generate
@@ -31,18 +40,26 @@ php artisan serve
 ```
 
 ### Frontend (Vue)
+
 ```bash
-cd autoatendimento-mvp
 npm install
 npm run dev
 ```
 
 ---
 
-## 🌐 Stack utilizada
-- Laravel 10+, Sanctum, Fortify
-- Vue 3, Vite, Pinia
-- Tailwind CSS
+## 🛠️ Tecnologias Utilizadas
+
+- [Laravel 12](https://laravel.com/)
+- [Sanctum](https://github.com/laravel/sanctum)
+- [Fortify](https://github.com/laravel/fortify)
+- [Vue 3](https://vuejs.org/)
+- [Vite](https://vite.dev/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
+- [TailwindCSS 4](https://tailwindcss.com/)
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+- **MySQL**
 
 ---
 
@@ -57,15 +74,58 @@ npm run dev
 
 ---
 
-## 📉 Exemplos de categorias
-- Lanches
-- Bebidas
-- Sobremesas
+## 📂 Estrutura do Projeto
+
+```bash
+├── me-serve
+│   ├── app, routes, database... # Back-end Laravel
+│   └── resources
+│       ├── views
+│       ├── css
+│       ├── images
+│       └── js # Front-end Vue.js 3
+│           ├── components
+│           ├── router
+│           ├── stores # Pinia
+│           └── views
+```
+
+---
+
+## 📦 Exemplos de categorias
+
+- 🍔 Hambúrgueres
+- 🥤 Bebidas
+- 🍦 Sobremesas
+- 🍟 Acompanhamentos
+
+---
 
 ## 🍽️ Produtos exemplo
-- Cheeseburger
-- Refrigerante Lata
+
+- Hambúrguer Clássico
+- Cheeseburger Duplo
+- Crispy Chicken Burger
+- Crispy King Burger
+- Casquinha de Chocolate
 - Casquinha de Baunilha
+- Refrigerante Cola
+- Refrigerante de Laranja
+- Refrigerante de Limão e Lima
+- Batata Frita
+- Brownie de Chocolate
+- VanillaDream Mix
+- ChocolateDream Mix
+- Onion Rings
+- Nuggets de Frango
+
+---
+
+## 🧪 Funcionalidades futuras (em desenvolvimento)
+
+- Painel administrativo completo
+- Relatórios de pedidos
+- Multiplataforma (modo quiosque/tablet)
 
 ---
 
@@ -74,3 +134,9 @@ npm run dev
 Este é um projeto opensource desenvolvido para estudo.
 
 Desenvolvido por Pedro Dias ☕
+
+---
+
+## 🖼️ Preview
+
+![Demo](https://github.com/pedrovpdias/me-serve/raw/main/public/assets/demo.gif?raw=true)
