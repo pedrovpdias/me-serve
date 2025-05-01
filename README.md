@@ -139,4 +139,4 @@ Desenvolvido por Pedro Dias ☕
 
 ## 🖼️ Preview
 
-![Demo](https://github.com/pedrovpdias/me-serve/raw/main/public/assets/demo.gif?raw=true)
+![Demo](https://github.com/pedrovpdias/me-serve/blob/main/public/demo.gif?raw=true)
