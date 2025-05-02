@@ -87,7 +87,7 @@ npm run dev
 │   ├── app, routes, database... # Back-end Laravel
 │   └── resources
 │       ├── views
-│       ├── css
+│       ├── css # Tailwind CSS
 │       ├── images
 │       └── js # Front-end Vue.js
 │           ├── components
