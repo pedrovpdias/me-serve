@@ -1,4 +1,4 @@
-# 🍔 meServe - Sistema de Autoatendimento para lanchonetes
+# 🍔 meServe - Sistema de Autoatendimento
 
 **meServe** é um sistema de autoatendimento para lanchonetes, inspirado nos totens de redes como **Burger King** e **McDonald's**. Este repositório contém o **frontend (Vue 3)** e o **backend (Laravel API)** integrados, oferecendo uma experiência fluida do **cardápio ao pagamento**.
 
@@ -15,6 +15,7 @@
 - Proteção de rotas administrativas
 - Seeders com categorias e produtos de exemplo
 - Upload e exibição de imagens dos produtos
+- Seeders com categorias, produtos de exemplo e status de pedidos para demonstrar o ciclo de vida dos pedidos.
 
 ### Frontend Vue 3
 
@@ -28,7 +29,7 @@
 
 ## 🚀 Como executar
 
-### Backend (Laravel)
+### 🧠 Backend (Laravel)
 
 ```bash
 cd me-serve
@@ -39,7 +40,7 @@ php artisan migrate --seed
 php artisan serve
 ```
 
-### Frontend (Vue)
+### 🖥️ Frontend (Vue)
 
 ```bash
 npm install
@@ -60,6 +61,7 @@ npm run dev
 - [TailwindCSS 4](https://tailwindcss.com/)
 - [Bootstrap Icons](https://icons.getbootstrap.com/)
 - **MySQL**
+- [TypeScript](https://www.typescriptlang.org/)
 
 ---
 
@@ -83,7 +85,7 @@ npm run dev
 │       ├── views
 │       ├── css
 │       ├── images
-│       └── js # Front-end Vue.js 3
+│       └── js # Front-end Vue.js
 │           ├── components
 │           ├── router
 │           ├── stores # Pinia
@@ -92,7 +94,7 @@ npm run dev
 
 ---
 
-## 📦 Exemplos de categorias
+## 📦 Categorias
 
 - 🍔 Hambúrgueres
 - 🥤 Bebidas
@@ -101,7 +103,7 @@ npm run dev
 
 ---
 
-## 🍽️ Produtos exemplo
+## 🍽️ Produtos (Exemplos)
 
 - Hambúrguer Clássico
 - Cheeseburger Duplo
@@ -121,6 +123,13 @@ npm run dev
 
 ---
 
+## 🚦 Status de Pedidos
+
+- Pedido aguardando preparo
+- Sendo preparado
+- Pronto para retirada
+- Entregue ao cliente
+
 ## 🧪 Funcionalidades futuras (em desenvolvimento)
 
 - Painel administrativo completo
@@ -129,11 +138,10 @@ npm run dev
 
 ---
 
-## 📜 Licença
+## 👨‍💻 Sobre o Projeto
 
-Este é um projeto opensource desenvolvido para estudo.
-
-Desenvolvido por Pedro Dias ☕
+Este é um projeto opensource criado por [Pedro Dias](https://github.com/pedrovpdias) ☕ com foco no aprendizado e exploração de tecnologias de desenvolvimento. O **meServe** simula uma solução para uma empresa fictícia, servindo como um laboratório para aprimorar minhas habilidades.
+Sinta-se à vontade para explorar o código e compartilhar ideias! 💡
 
 ---
 
