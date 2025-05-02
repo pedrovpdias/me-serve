@@ -23,7 +23,7 @@
 - Carrinho de compras persistente via **Pinia**
 - Animações e feedbacks visuais na finalização da compra
 - Layout responsivo com **Tailwind CSS**
-- Fluxo completo: Menu → Carrinho → Pagamento → Finalização
+- Fluxo completo: Menu → Carrinho → Checkout → Pagamento
 
 ---
 
@@ -73,6 +73,10 @@ npm run dev
 | POST   | /api/products      |     ✅    | Cadastra um novo produto    |
 | PUT    | /api/products/{id} |     ✅    | Atualiza um produto         |
 | DELETE | /api/products/{id} |     ✅    | Remove um produto           |
+| GET    | /api/payment-status|     ❌    | Simula o pagamento          |
+| GET    | /api/orders        |     ✅    | Lista todos os pedidos      |
+| POST   | /api/orders        |     ❌    | Registra um novo pedido     |
+| PUT    | /api/orders/{id}   |     ✅    | Atualiza um pedido          |
 
 ---
 
@@ -123,7 +127,7 @@ npm run dev
 
 ---
 
-## 🚦 Status de Pedidos
+## 🚦 Status dos Pedidos
 
 - Pedido aguardando preparo
 - Sendo preparado
@@ -140,7 +144,10 @@ npm run dev
 
 ## 👨‍💻 Sobre o Projeto
 
-Este é um projeto opensource criado por [Pedro Dias](https://github.com/pedrovpdias) ☕ com foco no aprendizado e exploração de tecnologias de desenvolvimento. O **meServe** simula uma solução para uma empresa fictícia, servindo como um laboratório para aprimorar minhas habilidades.
+Este é um projeto opensource criado por [Pedro Dias](https://github.com/pedrovpdias) ☕ com foco no aprendizado e exploração de tecnologias de desenvolvimento. 
+
+O **meServe** simula uma solução para uma empresa fictícia, servindo como um laboratório para aprimorar minhas habilidades.
+
 Sinta-se à vontade para explorar o código e compartilhar ideias! 💡
 
 ---
