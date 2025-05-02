@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderController;
 
 // Rotas da API
 
@@ -18,6 +19,8 @@ Route::get('/api/products', [ProductsController::class, 'index'])->name('product
 // Pagamento
 Route::get('/api/payment-status', [PaymentController::class, 'index'])->name('payment-status');
 
+// Order
+Route::post('/api/orders', [OrderController::class, 'store'])->name('orders.store');
 
 // Rotas do Vue
 Route::get('/{any}', function () {
