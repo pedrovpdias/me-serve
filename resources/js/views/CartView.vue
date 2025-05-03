@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <div class="grid gap-8 relative">
+  <div class="grid gap-8 relative md:w-auto md:flex-1 md:max-w-4xl mx-auto lg:px-4">
     <CartHeader />
 
     <main class="grid gap-8 z-20 bg-white p-8 -mt-30 md:-mt-20 rounded-tl-3xl rounded-tr-3xl -mx-px sticky top-80 border-t border-t-black/5">

@@ -19,7 +19,7 @@
 </script>
 
 <template>
-  <div class="grid gap-4 md:gap-8 relative px-4 md:px-8">
+  <div class="grid gap-4 md:gap-8 relative px-4 md:px-8 md:w-auto md:flex-1 md:max-w-4xl mx-auto lg:px-4">
     <DefaultHeader :previousRoute="'/cart'" />
 
     <main class="grid gap-8">

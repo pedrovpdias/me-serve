@@ -25,7 +25,7 @@
 </script>
 
 <template>
-  <main class="grid relative">
+  <main class="grid relative md:w-auto md:flex-1 md:max-w-4xl mx-auto lg:px-4">
     <MenuHeader />
 
     <section class="grid z-20 bg-white p-4 md:p-8 -mt-20 md:-mt-10 rounded-tl-3xl rounded-tr-3xl -mx-px sticky border-t border-t-black/5 w-auto">
