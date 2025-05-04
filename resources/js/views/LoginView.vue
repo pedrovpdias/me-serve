@@ -2,13 +2,74 @@
   import Title from '../components/Title.vue';
   import DefaultButton from '../components/DefaultButton.vue';
   import ToastError from '../components/ToastError.vue';
+  import LoginInputField from '../components/Login/LoginInputField.vue';
 
   import background from '../../images/restaurant_facade.png';
 
   import logo from '../../images/logo.svg';
 
+  import { ref } from 'vue';
+
   const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
   const csrfToken = csrfTokenMeta?.getAttribute('content') ?? '';
+
+  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null);
+
+  const inputs = [
+    {
+      name: 'email',
+      label: 'E-mail',
+      type: 'email',
+      placeholder: 'Digite o seu e-mail',
+      icon: 'bi bi-envelope-fill',
+    },
+    {
+      name: 'password',
+      label: 'Senha',
+      type: 'password',
+      placeholder: 'Digite a sua senha',
+      icon: 'bi bi-lock-fill',
+    },
+  ];
+
+  const userVerified = ref(false);
+  const loadingEmailVerification = ref(false);
+  const email = ref(''); // Adicione um ref para o e-mail
+  const errorMessage = ref(''); // Para exibir mensagens de erro
+
+  const verifyEmail = async () => {
+    loadingEmailVerification.value = true;
+    errorMessage.value = ''; // Limpa qualquer mensagem de erro anterior
+
+    try {
+      const response = await fetch('/api/login/verify-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfToken,
+        },
+        body: JSON.stringify({ email: email.value }),
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.status === 'success') {
+          userVerified.value = true;
+        } else {
+          errorMessage.value = data.message;
+          toastErrorRef.value?.showToast(errorMessage.value);
+        }
+      } else {
+        errorMessage.value = 'Erro ao verificar o e-mail.';
+        toastErrorRef.value?.showToast(errorMessage.value);
+      }
+    } catch (error: any) {
+      errorMessage.value = 'Erro de conexão ao verificar o e-mail.';
+      toastErrorRef.value?.showToast(errorMessage.value);
+    } finally {
+      loadingEmailVerification.value = false;
+    }
+  };
   
 </script>
 
@@ -21,9 +82,9 @@
       loading="lazy" 
     />
 
-    <ToastError />
+    <ToastError ref="toastErrorRef" />
 
-    <form class="w-fit shadow border border-primary/20 rounded-xl grid gap-8 grid-cols-2 p-8 grid-flow-dense z-20 bg-white">
+    <section class="w-fit shadow border border-primary/20 rounded-xl grid gap-8 grid-cols-2 p-8 grid-flow-dense z-20 bg-white">
       <div class="size-32 row-span-3">
         <img :src="logo" alt="Logo" class="w-full" loading="lazy" tabindex="-1" />
       </div>
@@ -32,34 +93,25 @@
 
       <input type="hidden" name="_token" :value="csrfToken">
 
-      <div class="grid gap-2 w-fit">
-        <label for="email" class="font-semibold">
-          E-mail
-        </label>
+      <LoginInputField v-if="!userVerified" :input="inputs[0]" v-model="email" />
 
-        <label for="email" class="flex items-center border border-primary/20 rounded-lg px-4 py-2 w-80 gap-4 group [&:has(input:focus)]:border-red-600 [&:has(input:focus)]:outline-1 [&:has(input:focus)]:outline-red-600/30">
-          <input 
-            type="email" 
-            placeholder="Digite o seu e-mail" 
-            id="email" name="email"
-            class="outline-none w-full"
-            autocomplete="off"
-          />
-
-          <span class="grid place-content-center opacity-30 flex-none group-[&:has(input:focus)]:opacity-100">
-            <i class="bi bi-envelope-fill pointer-events-none"></i>
-          </span>
-        </label>
-      </div>
+      <LoginInputField v-else :input="inputs[1]" />
 
       <div class="w-full flex justify-end">
-        <DefaultButton :text="'Continuar'" :event="() => {}" />
+        <DefaultButton v-if="userVerified" :text="'Entrar'" :event="() => {}" />
+
+        <DefaultButton 
+          v-else
+          :text="loadingEmailVerification ? 'Verificando...' : 'Continuar'"
+          :event="verifyEmail"
+          :disabled="loadingEmailVerification || !email"
+        />
       </div>
 
       <p class="text-sm opacity-80" tabindex="-1">
         Área de acesso exclusivo para funcionários.
       </p>
 
-    </form>
+    </section>
   </main>
 </template>

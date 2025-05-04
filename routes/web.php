@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LoginController;
 
 // Rotas da API
 
@@ -21,6 +22,9 @@ Route::get('/api/payment-status', [PaymentController::class, 'index'])->name('pa
 
 // Order
 Route::post('/api/orders', [OrderController::class, 'store'])->name('orders.store');
+
+// Login
+Route::post('/api/login/verify-email', [LoginController::class, 'verifyEmail'])->name('login.verify-email');
 
 // Rotas do Vue
 Route::get('/{any}', function () {
