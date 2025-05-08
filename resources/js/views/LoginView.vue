@@ -10,6 +10,12 @@
 
   import { ref } from 'vue';
 
+
+  import axios from 'axios';
+
+  import { useRouter } from 'vue-router'; // Importa o Vue Router
+  const router = useRouter(); // Instancia o Vue Router
+
   const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
   const csrfToken = csrfTokenMeta?.getAttribute('content') ?? '';
 
@@ -37,6 +43,11 @@
   const email = ref(''); // Adicione um ref para o e-mail
   const errorMessage = ref(''); // Para exibir mensagens de erro
 
+  const password = ref('');
+  const error = ref(null);
+  const loading = ref(false);
+
+  // Função para verificar se o e-mail está cadastrado
   const verifyEmail = async () => {
     loadingEmailVerification.value = true;
     errorMessage.value = ''; // Limpa qualquer mensagem de erro anterior
@@ -70,6 +81,27 @@
       loadingEmailVerification.value = false;
     }
   };
+
+  // Função para fazer login
+  const login = async () => {
+  loading.value = true;
+  error.value = null;
+  try {
+    const response = await axios.post('/api/login', {
+      email: email.value,
+      password: password.value,
+    });
+
+    const token = response.data.token;
+    localStorage.setItem('authToken', token);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    router.push('/admin');
+  } catch (err) {
+    error.value = err.response?.data?.message || 'Erro ao fazer login.';
+  } finally {
+    loading.value = false;
+  }
+};
   
 </script>
 
@@ -95,10 +127,15 @@
 
       <LoginInputField v-if="!userVerified" :input="inputs[0]" v-model="email" />
 
-      <LoginInputField v-else :input="inputs[1]" />
+      <LoginInputField v-else :input="inputs[1]" v-model="password" />
 
       <div class="w-full flex justify-end">
-        <DefaultButton v-if="userVerified" :text="'Entrar'" :event="() => {}" />
+        <DefaultButton 
+          v-if="userVerified" 
+          :text="'Entrar'" 
+          :event="login"
+          :disabled="loading || !password" 
+        />
 
         <DefaultButton 
           v-else

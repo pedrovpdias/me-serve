@@ -3,12 +3,35 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 use App\Models\User;
 
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
+    // Autentica o usuário e retorna o token
+    public function login(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (! $token = Auth::attempt($request->only('email', 'password'))) {
+            throw ValidationException::withMessages([
+                'email' => [trans('auth.failed')],
+            ]);
+        }
+
+        return response()->json([
+            'token' => $token,
+            'user' => Auth::user(),
+        ]);
+    }
+    
+    // Verifica se o e-mail existe no banco de dados
     public function verifyEmail(Request $request) {
         $email = $request->input('email');
 
@@ -28,8 +51,13 @@ class LoginController extends Controller
             //}
 
             else return response()->json(['status' => 'success']);
-        }
+        }        
+    }
 
-        
+    // Desloga o usuário
+    public function logout(Request $request)
+    {
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['message' => 'Logout realizado com sucesso']);
     }
 }
