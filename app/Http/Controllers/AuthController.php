@@ -14,25 +14,29 @@ class AuthController extends Controller
     // Autentica o usuário e retorna o token
     public function login(Request $request)
     {
-        /*$request->validate([
+        // Valida o e-mail e a senha
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-        ]);*/
+        ]);
 
         $token = Auth::attempt($request->only('email', 'password')); // Retorna o token
        
+        // Se o token for falso
         if (!$token) {
+            // Retorna o erro
             $response = [
-                'status' => 'denied',
-                'message' => 'Usuário ou senha incorretos.'
+                'status' => 'denied', // Status de erro denied (negado)
+                'message' => 'Usuário ou senha incorretos.' // Mensagem de erro
             ];
         }
 
         else {
+            // Se o token for verdadeiro
             $response = [
-                'status' => 'success',
-                'token' => $token,
-                'user' => Auth::user()
+                'status' => 'success', // Status de sucesso
+                'token' => $token, // Token
+                'user' => Auth::user() // Usuário
             ];
         }
 
