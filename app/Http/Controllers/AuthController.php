@@ -14,29 +14,41 @@ class AuthController extends Controller
     // Autentica o usuário e retorna o token
     public function login(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'email' => 'required|email',
             'password' => 'required',
-        ]);
+        ]);*/
 
-        if (! $token = Auth::attempt($request->only('email', 'password'))) {
-            throw ValidationException::withMessages([
-                'email' => [trans('auth.failed')],
-            ]);
+        $token = Auth::attempt($request->only('email', 'password')); // Retorna o token
+       
+        if (!$token) {
+            $response = [
+                'status' => 'denied',
+                'message' => 'Usuário ou senha incorretos.'
+            ];
         }
 
-        return response()->json([
-            'token' => $token,
-            'user' => Auth::user(),
-        ]);
+        else {
+            $response = [
+                'status' => 'success',
+                'token' => $token,
+                'user' => Auth::user()
+            ];
+        }
+
+        return response()->json($response);
     }
     
     // Verifica se o e-mail existe no banco de dados
     public function verifyEmail(Request $request) {
         $email = $request->input('email');
 
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            return response()->json(['status' => 'denied', 'message' => 'Informe um e-mail valido.']);
+        if (!$email || empty($email)) {
+            return response()->json(['status' => 'denied', 'message' => 'Informe um e-mail.']);
+        }
+
+        else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return response()->json(['status' => 'denied', 'message' => 'Informe um e-mail válido.']);
         }
 
         else {

@@ -84,20 +84,33 @@
 
   // Função para fazer login
   const login = async () => {
-  loading.value = true;
-  error.value = null;
+  loading.value = true; // Define o loading como true
+  error.value = null; // Limpa qualquer erro anterior
+
+  // Realiza a requisição para fazer login
   try {
     const response = await axios.post('/api/login', {
       email: email.value,
       password: password.value,
     });
 
-    const token = response.data.token;
-    localStorage.setItem('authToken', token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    router.push('/admin');
-  } catch (err) {
-    error.value = err.response?.data?.message || 'Erro ao fazer login.';
+    // Se o login for bem-sucedido
+    if (response.data.status === 'success') {
+      const token = response.data.token; // Pega o token
+
+      localStorage.setItem('authToken', token); // Salva o token no localStorage
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`; // Define o cabeçalho de autorização
+
+      router.push('/admin'); // Redireciona para a rota de admin
+    } else {
+      errorMessage.value = response.data.message; // Recebe a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
+    }
+
+  } catch (err: any) {
+    errorMessage.value = err.response?.data?.message || 'Erro ao fazer login.'; // Define a mensagem de erro
+    toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
   } finally {
     loading.value = false;
   }

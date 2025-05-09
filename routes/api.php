@@ -9,7 +9,8 @@ Route::get('/admin', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/api/login/verify-email', [AuthController::class, 'verifyEmail'])->name('login.verify-email');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
 Route::middleware('auth:sanctum')->get('/admin', function (Request $request) {
     return $request->user();
 });
