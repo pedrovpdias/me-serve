@@ -1,26 +1,26 @@
 <script setup lang="ts">
-  import Title from '../components/Title.vue';
-  import DefaultButton from '../components/DefaultButton.vue';
-  import ToastError from '../components/ToastError.vue';
-  import LoginInputField from '../components/Login/LoginInputField.vue';
+  import Title from '../components/Title.vue'; // Importa o título
+  import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
+  import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
+  import LoginInputField from '../components/Login/LoginInputField.vue'; // Importa o campo de login
 
-  import background from '../../images/restaurant_facade.png';
+  import background from '../../images/restaurant_facade.png'; // Importa o background da tela de login
 
-  import logo from '../../images/logo.svg';
+  import logo from '../../images/logo.svg'; // Importa a logo
 
-  import { ref } from 'vue';
+  import { ref } from 'vue'; // Importa as bibliotecas do Vue
 
-
-  import axios from 'axios';
+  import axios from 'axios'; // Importa o axios
 
   import { useRouter } from 'vue-router'; // Importa o Vue Router
   const router = useRouter(); // Instancia o Vue Router
 
-  const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
-  const csrfToken = csrfTokenMeta?.getAttribute('content') ?? '';
+  const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]'); // Pega o token CSRF
+  const csrfToken = csrfTokenMeta?.getAttribute('content') ?? ''; // Define o CSRF token
 
-  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null);
+  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
 
+  // Define os inputs
   const inputs = [
     {
       name: 'email',
@@ -38,14 +38,14 @@
     },
   ];
 
-  const userVerified = ref(false);
-  const loadingEmailVerification = ref(false);
+  const userVerified = ref(false); // Define o userVerified como false
+  const loadingEmailVerification = ref(false); // Define o loadingEmailVerification como false
   const email = ref(''); // Adicione um ref para o e-mail
   const errorMessage = ref(''); // Para exibir mensagens de erro
 
-  const password = ref('');
-  const error = ref(null);
-  const loading = ref(false);
+  const password = ref(''); // Adicione um ref para a senha
+  const error = ref(null); // Para exibir mensagens de erro
+  const loading = ref(false); // Define o loading como false
 
   // Função para verificar se o e-mail está cadastrado
   const verifyEmail = async () => {
@@ -53,6 +53,7 @@
     errorMessage.value = ''; // Limpa qualquer mensagem de erro anterior
 
     try {
+      // Realiza a requisição para verificar o e-mail
       const response = await fetch('/api/login/verify-email', {
         method: 'POST',
         headers: {
@@ -62,23 +63,24 @@
         body: JSON.stringify({ email: email.value }),
       });
       
+      // Se a resposta for bem-sucedida
       if (response.ok) {
-        const data = await response.json();
+        const data = await response.json(); // Pega os dados da resposta
         if (data.status === 'success') {
-          userVerified.value = true;
+          userVerified.value = true; // Define o userVerified como true
         } else {
-          errorMessage.value = data.message;
-          toastErrorRef.value?.showToast(errorMessage.value);
+          errorMessage.value = data.message; // Define a mensagem de erro
+          toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
         }
       } else {
-        errorMessage.value = 'Erro ao verificar o e-mail.';
-        toastErrorRef.value?.showToast(errorMessage.value);
+        errorMessage.value = 'Erro ao verificar o e-mail.'; // Define a mensagem de erro
+        toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
       }
     } catch (error: any) {
-      errorMessage.value = 'Erro de conexão ao verificar o e-mail.';
-      toastErrorRef.value?.showToast(errorMessage.value);
+      errorMessage.value = 'Erro de conexão ao verificar o e-mail.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
     } finally {
-      loadingEmailVerification.value = false;
+      loadingEmailVerification.value = false; // Define o loadingEmailVerification como false
     }
   };
 
@@ -112,7 +114,7 @@
     errorMessage.value = err.response?.data?.message || 'Erro ao fazer login.'; // Define a mensagem de erro
     toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast
   } finally {
-    loading.value = false;
+    loading.value = false; // Define o loading como false
   }
 };
   
