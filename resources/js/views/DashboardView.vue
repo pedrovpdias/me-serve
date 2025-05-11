@@ -1,10 +1,12 @@
 <script setup lang="ts">
-  import { useAuthStore } from '../stores/authStore';
+  import { useAuthStore } from '../stores/authStore'; // Importa o usuario
 
-  import logo from '../../images/logo_hr.svg';
+  import { computed } from 'vue'; // Importa as bibliotecas do Vue
 
-  const auth = localStorage.getItem('authToken') ? useAuthStore() : null;
-  console.log(auth.user); 
+  import logo from '../../images/logo_hr.svg'; // Importa a logo
+
+  const auth = useAuthStore(); // Instancia o usuario
+  const user = computed(() => auth.getUser);  // Pega os dados do usuario
 
 </script>
 <template>
@@ -13,7 +15,7 @@
       <img :src="logo" alt="Logo" class="w-1/3 md:w-1/5">
 
       <div class="flex gap-4">
-        
+        {{ user.name }}
       </div>
     </header>
   </main>

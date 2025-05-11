@@ -6,6 +6,7 @@ export const useAuthStore = defineStore('auth', {
     id: null as number | null,
     email: null as string | null,
     name: null as string | null,
+    role: null as string | null,
     token: null as string | null,
   }),
 
@@ -15,6 +16,7 @@ export const useAuthStore = defineStore('auth', {
       id: state.id,
       email: state.email,
       name: state.name,
+      role: state.role
     }),
     getToken: (state) => state.token,
   },
@@ -26,18 +28,20 @@ export const useAuthStore = defineStore('auth', {
       id: number; 
       email: string; 
       name: string;
-      token: string;
+      role: string;
     }) 
     {
       this.id = userData.id;
       this.email = userData.email;
       this.name = userData.name;
+      this.role = userData.role;
 
       // Salva os dados do usuario no localStorage
       localStorage.setItem('user', JSON.stringify({
         id: this.id,
         email: this.email,
         name: this.name,
+        role: this.role
       }));
     },
 
@@ -53,6 +57,7 @@ export const useAuthStore = defineStore('auth', {
       this.id = null;
       this.email = null;
       this.name = null;
+      this.role = null;
 
       localStorage.removeItem('user');
     },
@@ -73,7 +78,8 @@ export const useAuthStore = defineStore('auth', {
         const user = JSON.parse(userData);
         this.id = user.id;
         this.email = user.email;
-        this.name = user.name;
+        this.name = user.name
+        this.role = user.role
       }
 
       if (token) {
