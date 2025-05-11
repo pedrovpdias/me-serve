@@ -11,9 +11,11 @@ export const useAuthStore = defineStore('auth', {
 
   // Define os getters do usuario (retorna os dados do usuario)
   getters: {
-    getId: (state) => state.id,
-    getEmail: (state) => state.email,
-    getName: (state) => state.name,
+    getUser: (state) => ({
+      id: state.id,
+      email: state.email,
+      name: state.name,
+    }),
     getToken: (state) => state.token,
   },
 
@@ -39,6 +41,7 @@ export const useAuthStore = defineStore('auth', {
       }));
     },
 
+    // Define a função para setar o token
     setToken(token: string) {
       this.token = token; // Define o token
 
@@ -59,5 +62,23 @@ export const useAuthStore = defineStore('auth', {
       this.token = null;
       localStorage.removeItem('authToken');
     },
+
+    // Inicializa o usuario
+    initialize() {
+      const userData = localStorage.getItem('user'); // Pega os dados do usuario
+      const token = localStorage.getItem('authToken'); // Pega o token
+
+      // Se os dados do usuario e o token existirem
+      if (userData) {
+        const user = JSON.parse(userData);
+        this.id = user.id;
+        this.email = user.email;
+        this.name = user.name;
+      }
+
+      if (token) {
+        this.token = token;
+      }
+    }
   },
 });
