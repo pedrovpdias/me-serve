@@ -12,6 +12,9 @@
 
   import axios from 'axios'; // Importa o axios
 
+  import { useAuthStore } from '../stores/authStore';
+  const auth = useAuthStore();
+
   import { useRouter } from 'vue-router'; // Importa o Vue Router
   const router = useRouter(); // Instancia o Vue Router
 
@@ -100,7 +103,8 @@
     if (response.data.status === 'success') {
       const token = response.data.token; // Pega o token
 
-      localStorage.setItem('authToken', token); // Salva o token no localStorage
+      auth.setToken(token); // Define o token de autenticação
+      auth.setUser(response.data.user); // Define os dados do usuário
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`; // Define o cabeçalho de autorização
 
