@@ -23,6 +23,8 @@ Route::get('/api/payment-status', [PaymentController::class, 'index'])->name('pa
 // Order
 Route::post('/api/orders', [OrderController::class, 'store'])->name('orders.store');
 
+Route::get('/api/latest-orders', [OrderController::class, 'latestOrders'])->name('orders.latest');
+
 // Verificar e-mail de login
 Route::post('/api/login/verify-email', [AuthController::class, 'verifyEmail'])->name('login.verify-email');
 

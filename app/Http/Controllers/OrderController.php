@@ -42,4 +42,17 @@ class OrderController extends Controller
             return response()->json(['error' => 'Erro ao criar o pedido.', 'details' => $e->getMessage()], 500);
         }
     }
+
+    public function latestOrders()
+    {
+        $orders = Order::select('orders.*', 'orders_status.description')
+            ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
+            ->where('orders.order_status_id', '=', 1)
+            ->orderBy('orders.created_at', 'desc')
+            ->limit(10)
+            ->get();
+        
+        return response()->json($orders);
+    }
+
 }
