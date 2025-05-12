@@ -85,6 +85,14 @@ export const useAuthStore = defineStore('auth', {
       if (token) {
         this.token = token;
       }
+    },
+
+    logout() {
+      this.clearUser();
+      this.clearToken();
+
+      // Redireciona para a rota de login
+      window.location.href = '/login';
     }
   },
 });
