@@ -47,7 +47,7 @@
         });
         
         const data = await response.json(); // Pega os dados da resposta
-
+        console.log(data);
         // Se data.status for 'aprovado' ou 'recusado', para o intervalo
         if (data.status === 'aprovado') {
           status.value = 'aprovado';

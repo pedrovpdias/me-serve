@@ -8,13 +8,14 @@ class PaymentController extends Controller
 {
     // Simulação simples de pagamento
     public function index()
-    { 
+    {   
+        date_default_timezone_set('America/Sao_Paulo');
         //Verifica se o status do pagamento ainda nao foi definido
         if (!session()->has('status_pagamento')) {
             session(['status_pagamento' => 'pendente']);
     
             // Muda automaticamente para 'aprovado' ou 'recusado'
-            session(['tempo_pagamento' => now()->addSeconds(10)]);
+            session(['tempo_pagamento' => now()]);
         }
     
         // Simula o pagamento
