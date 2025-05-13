@@ -70,7 +70,12 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !localStorage.getItem('authToken')) {
     next('/login');
   } else {
-    next();
+
+    if (to.meta.guest && localStorage.getItem('authToken')) {
+      next('/admin');
+    } else {
+      next();
+    }
   }
 });
 

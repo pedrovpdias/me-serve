@@ -1,6 +1,12 @@
+<script setup lang="ts">
+  import Subtitle from './Subtitle.vue'; // Importa o sub-título
+</script>
+
 <template>
   <div class="w-full flex-1">
-      <Bar
+    <Subtitle :text="'Vendas por dia'" />
+
+    <Bar
       id="sales-chart"
       :options="chartOptions"
       :data="chartData"
@@ -9,32 +15,32 @@
 </template>
 
 <script lang="ts">
-import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
+  import { Bar } from 'vue-chartjs'
+  import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
 
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
+  ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-export default {
-  name: 'BarChart',
-  components: { Bar },
-  data() {
-    return {
-      chartData: {
-        labels: [
-          'Dom',
-          'Seg',
-          'Ter',
-          'Qua',
-          'Qui',
-          'Sex',
-          'Sab',
-        ],
-        datasets: [ { data: [40, 20, 12] } ],
-      },
-      chartOptions: {
-        responsive: true
+  export default {
+    name: 'BarChart',
+    components: { Bar },
+    data() {
+      return {
+        chartData: {
+          labels: [
+            'Dom',
+            'Seg',
+            'Ter',
+            'Qua',
+            'Qui',
+            'Sex',
+            'Sab',
+          ],
+          datasets: [ { data: [40, 20, 12] } ],
+        },
+        chartOptions: {
+          responsive: true
+        }
       }
     }
   }
-}
 </script>
