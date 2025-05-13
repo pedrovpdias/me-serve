@@ -43,6 +43,7 @@ class OrderController extends Controller
         }
     }
 
+    // Retorna os 10 pedidos mais recentes
     public function latestOrders()
     {
         $orders = Order::select('orders.*', 'orders_status.description')
@@ -53,6 +54,28 @@ class OrderController extends Controller
             ->get();
         
         return response()->json($orders);
+    }
+
+    // Conta quantos pedidos foram feitos hoje
+    public function dailyOrdersCounter()
+    {
+        $orders = Order::whereDate('created_at', today())->count();
+        
+        return response()->json($orders);
+    }
+
+    public function dailyBilling()
+    {
+        $billing = Order::whereDate('created_at', today())->sum('total');
+        
+        return response()->json($billing);
+    }
+
+    public function dailyProductsSold()
+    {
+        $productsSold = OrderProduct::whereDate('created_at', today())->count('product_id');
+        
+        return response()->json($productsSold);
     }
 
 }
