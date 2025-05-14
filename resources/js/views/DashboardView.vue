@@ -53,7 +53,7 @@
       <Title :text="'Dashboard'" />
 
       <section class="grid gap-4 grid-cols-3">
-        <button class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg hover:bg-gray-50 focus:bg-gray-50 transition-all active:shadow-inner">
+        <div class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg">
           <div class="w-fit mx-auto">
             <img :src="ordersIcon" alt="Pedidos" class="w-auto h-16" loading="lazy">
           </div>
@@ -63,15 +63,17 @@
           </span>
 
           <div class="grid text-lg font-highlight">
-            <span class="text-3xl font-bold">
+            <span class="text-3xl font-bold text-center">
               {{ dailyOrders }}
             </span>
 
-            pedidos
+            <span class="text-sm opacity-80 text-center">
+              pedidos
+            </span>            
           </div>
-        </button>
+        </div>
         
-        <button class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg hover:bg-gray-50 focus:bg-gray-50 transition-all active:shadow-inner">
+        <div class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg">
           <div class="w-fit mx-auto">
             <img :src="billingIcon" alt="Faturamento" class="w-auto h-16" loading="lazy">
           </div>
@@ -81,15 +83,17 @@
           </span>
 
           <div class="grid text-lg font-highlight">
-            <span class="text-3xl font-bold">
+            <span class="text-3xl font-bold text-center">
               R$ {{ dailyBilling }}
             </span>
 
-            {{ billingDate }}
+            <span class="text-sm opacity-80 text-center">
+              {{ billingDate }}
+            </span>
           </div>
-        </button>
+        </div>
         
-        <button class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg hover:bg-gray-50 focus:bg-gray-50 transition-all active:shadow-inner">
+        <div class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg">
           <div class="w-fit mx-auto">
             <img :src="productsIcon" alt="Produtos" class="w-auto h-16" loading="lazy">
           </div>
@@ -99,13 +103,15 @@
           </span>
 
           <div class="grid text-lg font-highlight">
-            <span class="text-3xl font-bold">
+            <span class="text-3xl font-bold text-center">
               {{ dailyProductsSold }}
             </span>
 
-            produtos
+            <span class="text-sm opacity-80 text-center">
+              produtos
+            </span>            
           </div>
-        </button>
+        </div>
       </section>
 
       <section class="flex items-start gap-8 no-wrap">
