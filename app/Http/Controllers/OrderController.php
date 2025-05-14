@@ -12,6 +12,8 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         try {
             DB::beginTransaction();
 
@@ -46,6 +48,8 @@ class OrderController extends Controller
     // Retorna os 10 pedidos mais recentes
     public function latestOrders()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $orders = Order::select('orders.*', 'orders_status.description')
             ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
             ->where('orders.order_status_id', '=', 1)
@@ -59,6 +63,8 @@ class OrderController extends Controller
     // Conta quantos pedidos foram feitos hoje
     public function dailyOrdersCounter()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $orders = Order::whereDate('created_at', today())->count();
         
         return response()->json($orders);
@@ -66,6 +72,8 @@ class OrderController extends Controller
 
     public function dailyBilling()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $billing = Order::whereDate('created_at', today())->sum('total');
         
         return response()->json($billing);
@@ -73,6 +81,8 @@ class OrderController extends Controller
 
     public function dailyProductsSold()
     {
+        date_default_timezone_set('America/Sao_Paulo');
+        
         $productsSold = OrderProduct::whereDate('created_at', today())->count('product_id');
         
         return response()->json($productsSold);
