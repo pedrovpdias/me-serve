@@ -12,7 +12,7 @@ class OrderController extends Controller
 {
     public function store(Request $request)
     {
-        date_default_timezone_set('America/Sao_Paulo');
+        date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário
         
         try {
             DB::beginTransaction();
@@ -48,7 +48,7 @@ class OrderController extends Controller
     // Retorna os 10 pedidos mais recentes
     public function latestOrders()
     {
-        date_default_timezone_set('America/Sao_Paulo');
+        date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário
         
         $orders = Order::select('orders.*', 'orders_status.description')
             ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
@@ -70,21 +70,35 @@ class OrderController extends Controller
         return response()->json($orders);
     }
 
+    // Retorna o faturamento do dia
     public function dailyBilling()
     {
-        date_default_timezone_set('America/Sao_Paulo');
+        date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário
         
         $billing = Order::whereDate('created_at', today())->sum('total');
         
         return response()->json($billing);
     }
 
+    // Conta quantos produtos foram vendidos hoje
     public function dailyProductsSold()
     {
         date_default_timezone_set('America/Sao_Paulo');
         
         $productsSold = OrderProduct::whereDate('created_at', today())->count('product_id');
         
+        return response()->json($productsSold);
+    }
+
+    // Retorna o total de produtos vendidos na última semana
+    public function weeklyProductsSold()
+    {
+        date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário
+        
+        // Conta quantos produtos foram vendidos na última semana (7 dias)
+        for($date = now()->subDays(6)->format('Y-m-d'); $date <= now()->format('Y-m-d'); $date++) {
+            $productsSold[$date] = OrderProduct::whereDate('created_at', $date)->count('product_id');
+        }
         return response()->json($productsSold);
     }
 
