@@ -45,7 +45,7 @@
     </table>
 
     <div class="flex justify-end">
-      <router-link to="/orders" class="bg-secondary w-full text-sm font-semibold py-1 px-2 text-center hover:bg-primary/10 focus:bg-primary/10 active:shadow-inner outline-none">
+      <router-link to="/admin/orders" class="bg-secondary w-full text-sm font-semibold py-1 px-2 text-center hover:bg-primary/10 focus:bg-primary/10 active:shadow-inner outline-none">
         Ver todos
       </router-link>
     </div>

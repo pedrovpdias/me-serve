@@ -1,9 +1,11 @@
 <script setup lang="ts">
+  import Breadcrumb from './Breadcrumb.vue'; // Importa o breadcrumb
   import { useAuthStore } from '../stores/authStore'; // Importa o usuario
 
   import { computed, ref } from 'vue'; // Importa as bibliotecas do Vue
 
   import logo from '../../images/logo.svg'; // Importa a logo
+import { link } from 'fs';
 
   const auth = useAuthStore(); // Instancia o usuario
   const user = computed(() => auth.getUser);  // Pega os dados do usuario
@@ -13,10 +15,18 @@
   const toggleLogoutDropdown = () => {
     showLogoutDropdown.value = !showLogoutDropdown.value;
   };
+
+  defineProps<{ 
+    breadcrumbLinks: { 
+      name: string, 
+      path: string }[] 
+  }>();
+
 </script>
 
 <template>
-  <header class="w-full flex justify-between items-center px-8 pb-4 border-b border-b-primary/10">
+  <header class="flex w-full flex-col gap-4">
+    <div class="w-full flex justify-between items-center px-8 pb-4 border-b border-b-primary/10">
       <router-link to="/admin">
         <img :src="logo" alt="Logo" class="w-16 h-auto">
       </router-link>
@@ -36,7 +46,10 @@
           </button>
         </div>
       </button>
-    </header>
+    </div>
+
+    <Breadcrumb :breadcrumbLinks="breadcrumbLinks" />
+  </header>
 </template>
 
 <script lang="ts">
