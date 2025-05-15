@@ -54,7 +54,7 @@ class OrderController extends Controller
             ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
             ->where('orders.order_status_id', '=', 1)
             ->orderBy('orders.created_at', 'desc')
-            ->limit(10)
+            ->limit(5)
             ->get();
         
         return response()->json($orders);
