@@ -7,6 +7,7 @@ import MenuView from '@/views/MenuView.vue'; // Importa a view Menu
 import CartView from '@/views/CartView.vue'; // Importa a view Cart
 import CheckoutView from '@/views/CheckoutView.vue'; // Importa a view Checkout
 import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
+import OrdersView from '@/views/OrdersView.vue'; // Importa a view Orders
 
 // Importa as views privadas
 import DashboardView from '@/views/DashboardView.vue';
@@ -58,6 +59,14 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: DashboardView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/orders',
+      name: 'orders',
+      component: OrdersView,
       meta: {
         requiresAuth: true
       }
