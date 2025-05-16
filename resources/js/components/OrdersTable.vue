@@ -4,15 +4,39 @@
   import axios from 'axios';
 
   const orders = ref<any[]>([]);
+  const pagination = ref({
+    current_page: 1,
+    last_page: 1,
+    per_page: 10,
+    total: 0,
+  });
+  const sort = ref({
+    field: 'created_at',
+    direction: 'desc',
+  })
 
-  function getOrders() {
-    return axios.get('/api/orders').then((response) => {
-      return response.data;
-    });
+  async function getOrders(page: number = 1, perPage: number = 5, sort: string = 'created_at', direction: 'asc' | 'desc' = 'asc') {
+    try {
+      const response = await axios.get('/api/orders', {
+        params: {
+          page: page,
+          per_page: perPage,
+          sort: sort,
+          direction: direction,
+        },
+      });
+      return response.data; // O Laravel paginate retorna um objeto com 'data', 'links', 'meta'
+    } catch (error) {
+      console.error('Erro ao buscar pedidos:', error);
+      throw error; // É uma boa prática relançar o erro para tratamento no componente
+    }
   }
 
   onMounted(async () => {
-    orders.value = await getOrders();
+    const response = await getOrders();
+    orders.value = response.data;
+    pagination.value = response;
+
   });
 </script>
 

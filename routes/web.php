@@ -24,6 +24,7 @@ Route::get('/api/payment-status', [PaymentController::class, 'index'])->name('pa
 
 
 // PEDIDOS
+// Retorna os pedidos por paginação
 Route::get('/api/orders', [OrderController::class, 'index'])->name('orders');
 Route::post('/api/orders', [OrderController::class, 'store'])->name('orders.store');
 // Retorna os 10 pedidos mais recentes

@@ -10,11 +10,17 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    public function index() {
+    public function index(Request $request) {
+        $page = $request->input('page', 1);
+        $perPage = $request->input('per_page', 10);
+        $sortField = $request->input('sort', 'created_at'); // Valor padrão para ordenação
+        $sortDirection = $request->input('direction', 'desc'); // Valor padrão para direção
+        
+
         $orders = Order::select('orders.*', 'orders_status.description')
             ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
-            ->orderBy('orders.created_at', 'asc')
-            ->get();
+            ->orderBy($sortField, $sortDirection)
+            ->paginate($perPage); // Paginação dos pedidos
         return response()->json($orders);
     }
     
