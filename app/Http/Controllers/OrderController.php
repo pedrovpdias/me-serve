@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
+    public function index() {
+        $orders = Order::select('orders.*', 'orders_status.description')
+            ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
+            ->orderBy('orders.created_at', 'asc')
+            ->get();
+        return response()->json($orders);
+    }
+    
+    // Cria um novo pedido
     public function store(Request $request)
     {
         date_default_timezone_set('America/Sao_Paulo'); // Define o fuso horário

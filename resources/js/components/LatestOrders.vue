@@ -32,7 +32,7 @@
       <tbody>
         <tr v-for="order in orders" :key="order.id" class="odd:bg-secondary hover:bg-primary/10">
           <td class="text-left font-semibold p-2">
-            #{{ order.id }}
+            #{{ order.id.toString().padStart(6, '0') }}
           </td>
           <td class="text-left p-2">
             R$ {{ order.total }}
