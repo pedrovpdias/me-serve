@@ -46,17 +46,22 @@
           </td>
         </tr>
       </tbody>
+
+      <tfoot>
+        <tr class="text-sm text-primary/80">
+          <td class="text-center py-4 px-2" colspan="3">
+            <router-link to="/admin/orders" class="text-sm font-semibold py-1 px-2 text-center text-red-600 hover:text-red-800 focus:text-red-800 outline-none hover:underline focus:underline w-full">
+              Ver todos
+            </router-link>
+          </td>
+        </tr>
+      </tfoot>
     </table>
 
     <p v-else class="text-center text-red-600 font-semibold">
       Sem pedidos recentes
     </p>
 
-    <div class="flex justify-end">
-      <router-link to="/admin/orders" class="text-sm font-semibold py-1 px-2 text-center text-red-600 hover:text-red-800 focus:text-red-800 outline-none hover:underline focus:underline w-full">
-        Ver todos
-      </router-link>
-    </div>
   </div>
 </template>
 
