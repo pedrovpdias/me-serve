@@ -66,7 +66,7 @@
 
 <template>
   <section class="grid gap-4 grid-cols-3">
-    <div v-for="report in reports" :key="report.title" class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-lg">
+    <div v-for="report in reports" :key="report.title" class="flex flex-col gap-4 py-8 px-2 items-center border border-primary/10 rounded-xl">
       <div class="w-fit mx-auto">
         <img :src="report.icon" :alt="report.title" class="w-auto h-16" loading="lazy">
       </div>

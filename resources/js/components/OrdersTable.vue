@@ -71,8 +71,12 @@
 </script>
 
 <template>
-  <table class="w-full flex-none border border-primary/10">
-    <thead class="border-b border-primary/10">
+  <table
+    v-if="orders.length > 0" 
+    class="w-full flex-none rounded-xl overflow-hidden outline outline-1 outline-primary/10 relative"
+    aria-label="Pedidos"
+  >
+    <thead class="border-b border-primary/10 text-red-600">
       <tr>
         <th class="text-left p-2">
           Nº do pedido
@@ -97,7 +101,7 @@
     </thead>
 
     <tbody>
-      <tr v-for="order in orders" :key="order.id" class="odd:bg-secondary hover:bg-primary/10">
+      <tr v-for="order in orders" :key="order.id" class="odd:bg-red-50 hover:bg-amber-100 focus:bg-amber-100 outline-none">
         <td class="text-left font-semibold p-2">
           #{{ order.id.toString().padStart(6, '0') }}
         </td>
@@ -119,9 +123,29 @@
         </td>
       </tr>
     </tbody>
-  </table>
 
-  <PaginationButtons :pagination="pagination"  @page-changed="handlePageChange" />
+    <tfoot>
+      <tr class="text-sm text-primary/80">
+        <td class="text-left py-4 px-2" colspan="4">
+          <span>
+            Total de pedidos: {{ pagination.total }}
+          </span>
+        </td>
+
+        <td class="text-right p-2">
+          <span>
+            Exibindo de {{ pagination.per_page * (pagination.current_page - 1) + 1 }} a {{ pagination.per_page * pagination.current_page > pagination.total ? pagination.total : pagination.per_page * pagination.current_page }} de {{ pagination.total }}
+          </span>
+        </td>
+      </tr>
+
+      <tr>
+        <td class="text-left p-2" colspan="5">
+          <PaginationButtons :pagination="pagination" @page-changed="handlePageChange" />
+        </td>
+      </tr>
+    </tfoot>
+  </table>
 </template>
 
 <script lang="ts">
