@@ -13,7 +13,7 @@ class OrderController extends Controller
     public function index(Request $request) {
         $page = $request->input('page', 1);
         $perPage = $request->input('per_page', 10);
-        $sortField = $request->input('sort', 'created_at'); // Valor padrão para ordenação
+        $sortField = $request->input('sort', 'id'); // Valor padrão para ordenação
         $sortDirection = $request->input('direction', 'desc'); // Valor padrão para direção
         
 
