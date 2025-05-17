@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+ import PaginationButtons from './PaginationButtons.vue'; // Importa os botões de paginação
   import { onMounted, ref, computed } from 'vue';
 
   import axios from 'axios';
@@ -115,17 +116,7 @@
     </tbody>
   </table>
 
-  <div class="flex flex-row gap-2 items-center justify-center">
-    <button
-      v-for="(link, index) in pagination.links"
-      :key="index"
-      :disabled="link.url === null"
-      @click="handlePageChange(link.url)"
-      class="flex items-center gap-2 text-sm font-semibold hover:text-primary/80 focus:text-primary/80 outline-none"
-    >
-      <span v-html="link.label"></span>
-    </button>
-  </div>
+  <PaginationButtons :pagination="pagination"  @page-changed="handlePageChange" />
 </template>
 
 <script lang="ts">
