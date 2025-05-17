@@ -38,8 +38,8 @@ import { link } from 'fs';
           <i class="bi bi-person-fill"></i>
         </span>
 
-        <div v-if="showLogoutDropdown" class="absolute top-12 right-0 bg-white shadow rounded-lg px-4 py-2 flex flex-col gap-2 text-sm pointer-events-none">
-          <button @click="auth.logout()" class="text-red-600 font-semibold flex items-center gap-2 hover:text-red-800 focus:text-red-800 outline-none pointer-events-none">
+        <div v-if="showLogoutDropdown" class="absolute top-12 right-0 bg-white shadow rounded-lg px-4 py-2 flex flex-col gap-2 text-sm">
+          <button @click="auth.logout()" class="text-red-600 font-semibold flex items-center gap-2 hover:text-red-800 focus:text-red-800 outline-none">
             Sair
 
             <i class="bi bi-box-arrow-right pointer-events-none"></i>
