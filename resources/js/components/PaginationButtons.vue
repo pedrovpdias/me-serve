@@ -34,15 +34,15 @@
 </script>
 
 <template>
-  <div class="flex flex-row gap-2 items-center justify-center">
+  <div class="flex flex-row items-center justify-center">
     <button
       v-for="(link, index) in pagination.links"
       :key="index"
       :disabled="link.url === null"
       @click="handleButtonClick(link.url)"
-      class="flex items-center gap-2 text-sm font-semibold hover:text-primary/80 focus:text-primary/80 outline-none"
+      class="grid place-content-center py-2 px-4 first:rounded-l-lg last:rounded-r-lg border not-last:border-r-0 border-primary/10 gap-2 text-sm font-semibold hover:text-primary/80 hover:bg-primary/10 focus:text-primary/80 focus:bg-primary/10 outline-none disabled:opacity-50 disabled:pointer-events-none"
     >
-      <span v-html="link.label"></span>
+      <span v-html="link.label" class="pointer-events-none"></span>
     </button>
   </div>
 </template>
