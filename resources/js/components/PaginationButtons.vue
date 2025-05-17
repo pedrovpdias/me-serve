@@ -1,30 +1,34 @@
 <script setup lang="ts">
-  import { defineEmits } from 'vue';
+  import { defineEmits } from 'vue'; // Importa as bibliotecas do Vue
 
+  // Interface dos links da paginação
   interface paginationLink {
     url: any | null;
     label: string;
     active: boolean;
   }
 
+  // Recebe os links da paginação
   defineProps({
     pagination: {
       type: Object as () => {
-        current_page: number;
-        last_page: number;
-        per_page: number;
-        total: number;
-        links: paginationLink[];
+        current_page: number; // Página atual
+        last_page: number; // Total de páginas / última pagina
+        per_page: number; // Itens por página
+        total: number; // Total de itens
+        links: paginationLink[]; // Links de navegação
       },
       required: true,
     },
   });
 
-  const emit = defineEmits(['page-changed']);
+  const emit = defineEmits(['page-changed']); // Define o evento a ser emitido
 
+  // Função para lidar com o evento de clique no botão de navegação
   function handleButtonClick(url: string | null) {
+    // Verifica se a URL foi fornecida
     if (url) {
-      emit('page-changed', url);
+      emit('page-changed', url); // Emite o evento 'page-changed' com a URL
     }
   }
 </script>
