@@ -76,6 +76,29 @@
     }
   }
 
+  // Função chamada no clique do botão de ordenação
+  function onSortClick(field: string) {
+    if (sort.value.field === field) {
+      sort.value.direction = sort.value.direction === 'asc' ? 'desc' : 'asc'
+    } else {
+      sort.value.field = field
+      sort.value.direction = 'asc'
+    }
+
+    handleSort(sort.value.field, sort.value.direction)
+  }
+
+  // Função para buscar dados ordenados
+  async function handleSort(field: string, direction: 'asc' | 'desc') {
+    try {
+      const response = await getOrders(1, pagination.value.per_page, field, direction)
+      orders.value = response.data
+      pagination.value = response
+    } catch (error) {
+      console.error('Erro ao buscar pedidos:', error)
+    }
+  }
+
   // Quando o componente for montado
   onMounted(async () => {
     const response = await getOrders(); // Busca os pedidos
@@ -96,7 +119,7 @@
 
       <tr>
         <th class="text-left p-2">
-          <button @click="sort.field = 'id'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+          <button @click="onSortClick('id')" >
             Nº do pedido
             <span v-if="sort.field === 'id' && sort.direction === 'asc'" class="text-xs">
               <i class="bi bi-caret-up-fill"></i>
@@ -108,7 +131,7 @@
         </th>
 
         <th class="text-left p-2">
-          <button @click="sort.field = 'client_name'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+          <button @click="onSortClick('client_name')">
             Cliente
             <span v-if="sort.field === 'client_name' && sort.direction === 'asc'" class="text-xs">
               <i class="bi bi-caret-up-fill"></i>
@@ -120,7 +143,7 @@
         </th>
 
         <th class="text-left p-2">
-          <button @click="sort.field = 'created_at'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+          <button @click="onSortClick('created_at')">
             Data
             <span v-if="sort.field === 'created_at' && sort.direction === 'asc'" class="text-xs">
               <i class="bi bi-caret-up-fill"></i>
@@ -132,7 +155,7 @@
         </th>
 
         <th class="text-left p-2">
-          <button @click="sort.field = 'total'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+          <button @click="onSortClick('total')">
             Valor
             <span v-if="sort.field === 'total' && sort.direction === 'asc'" class="text-xs">
               <i class="bi bi-caret-up-fill"></i>
@@ -144,7 +167,7 @@
         </th>
 
         <th class="text-left p-2">
-          <button @click="sort.field = 'description'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+          <button @click="onSortClick('description')">
             Status
             <span v-if="sort.field === 'description' && sort.direction === 'asc'" class="text-xs">
               <i class="bi bi-caret-up-fill"></i>
