@@ -1,11 +1,13 @@
 <script lang="ts" setup>
+  import PerPageSelector from './PerPageSelector.vue'; // Importa o selector de itens por página
   import TableFooter from './TableFooter.vue'; // Importa o footer da tabela
   import { onMounted, ref, computed } from 'vue'; // Importa as bibliotecas do Vue
 
-  import axios from 'axios'; // Importa o axios
-import { table } from 'console';
+  import axios, { get } from 'axios'; // Importa o axios
 
   const orders = ref<any[]>([]); // Define a lista de pedidos
+
+  const table = 'Pedidos';
 
   // Interface dos links da paginação
   interface paginationLink {
@@ -26,7 +28,7 @@ import { table } from 'console';
   // Define o estado da ordenação
   const sort = ref({
     field: 'id', // Campo de ordenação
-    direction: 'asc', // Direção de ordenação
+    direction: 'asc' as 'asc' | 'desc', // Direção de ordenação
   })
 
   // Busca os pedidos
@@ -62,6 +64,18 @@ import { table } from 'console';
     }
   }
 
+  // Função para lidar com o evento de mudança de itens por página
+  async function handlePerPageChange(perPage: number) {
+    try {
+      const response = await getOrders(1, perPage, sort.value.field, sort.value.direction);
+
+      orders.value = response.data;
+      pagination.value = response;
+    } catch (error) {
+      console.error('Erro ao buscar pedidos:', error);
+    }
+  }
+
   // Quando o componente for montado
   onMounted(async () => {
     const response = await getOrders(); // Busca os pedidos
@@ -78,27 +92,70 @@ import { table } from 'console';
     aria-label="Pedidos"
   >
     <thead class="border-b border-primary/10 text-red-600">
+      <PerPageSelector @perPage-changed="handlePerPageChange" :pagination="pagination" :table="table.toLowerCase()" />
+
       <tr>
         <th class="text-left p-2">
-          Nº do pedido
+          <button @click="sort.field = 'id'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+            Nº do pedido
+            <span v-if="sort.field === 'id' && sort.direction === 'asc'" class="text-xs">
+              <i class="bi bi-caret-up-fill"></i>
+            </span>
+            <span v-else-if="sort.field === 'id' && sort.direction === 'desc'" class="text-xs">
+              <i class="bi bi-caret-down-fill"></i>
+            </span>
+          </button>
         </th>
 
         <th class="text-left p-2">
-          Cliente
+          <button @click="sort.field = 'client_name'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+            Cliente
+            <span v-if="sort.field === 'client_name' && sort.direction === 'asc'" class="text-xs">
+              <i class="bi bi-caret-up-fill"></i>
+            </span>
+            <span v-else-if="sort.field === 'client_name' && sort.direction === 'desc'" class="text-xs">
+              <i class="bi bi-caret-down-fill"></i>
+            </span>
+          </button>
         </th>
 
         <th class="text-left p-2">
-          Data
+          <button @click="sort.field = 'created_at'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+            Data
+            <span v-if="sort.field === 'created_at' && sort.direction === 'asc'" class="text-xs">
+              <i class="bi bi-caret-up-fill"></i>
+            </span>
+            <span v-else-if="sort.field === 'created_at' && sort.direction === 'desc'" class="text-xs">
+              <i class="bi bi-caret-down-fill"></i>
+            </span>
+          </button>
         </th>
 
         <th class="text-left p-2">
-          Valor
+          <button @click="sort.field = 'total'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+            Valor
+            <span v-if="sort.field === 'total' && sort.direction === 'asc'" class="text-xs">
+              <i class="bi bi-caret-up-fill"></i>
+            </span>
+            <span v-else-if="sort.field === 'total' && sort.direction === 'desc'" class="text-xs">
+              <i class="bi bi-caret-down-fill"></i>
+            </span>
+          </button>
         </th>
 
         <th class="text-left p-2">
-          Status
+          <button @click="sort.field = 'description'; sort.direction = sort.direction === 'asc' ? 'desc' : 'asc'">
+            Status
+            <span v-if="sort.field === 'description' && sort.direction === 'asc'" class="text-xs">
+              <i class="bi bi-caret-up-fill"></i>
+            </span>
+            <span v-else-if="sort.field === 'description' && sort.direction === 'desc'" class="text-xs">
+              <i class="bi bi-caret-down-fill"></i>
+            </span>
+          </button>
         </th>
       </tr>
+
     </thead>
 
     <tbody>
@@ -126,7 +183,7 @@ import { table } from 'console';
     </tbody>
 
     <TableFooter
-      :table="'pedidos'"
+      :table="table.toLowerCase()"
       :pagination="pagination"
       @page-changed="handlePageChange"
     />
