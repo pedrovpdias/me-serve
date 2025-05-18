@@ -33,7 +33,7 @@
 
 <template>
   <tr class="text-sm text-primary/80">
-    <th class="font-normal text-sm p-2 text-right" :colspan="Object.keys(pagination).length">
+    <th class="font-normal text-sm pt-4 px-2 text-right" :colspan="Object.keys(pagination).length">
       <div class="flex items-center gap-2 justify-end">
         <select 
           v-model="pagination.per_page" 
