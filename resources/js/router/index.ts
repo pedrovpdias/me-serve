@@ -8,6 +8,7 @@ import CartView from '@/views/CartView.vue'; // Importa a view Cart
 import CheckoutView from '@/views/CheckoutView.vue'; // Importa a view Checkout
 import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
 import OrdersView from '@/views/OrdersView.vue'; // Importa a view Orders
+import OrderDetailsView from '@/views/OrderDetailsView.vue'; // Importa a view OrderDetails
 
 // Importa as views privadas
 import DashboardView from '@/views/DashboardView.vue';
@@ -67,6 +68,14 @@ const router = createRouter({
       path: '/admin/orders',
       name: 'orders',
       component: OrdersView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/admin/orders/:orderId',
+      name: 'order-details',
+      component: OrderDetailsView,
       meta: {
         requiresAuth: true
       }

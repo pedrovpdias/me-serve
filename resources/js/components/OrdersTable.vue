@@ -177,6 +177,8 @@
             </span>
           </button>
         </th>
+
+        <th></th>
       </tr>
 
     </thead>
@@ -201,6 +203,16 @@
 
         <td class="text-left p-2">
           {{ order.description }}
+        </td>
+
+        <td class="text-left p-2">
+          <router-link 
+            :to="`/admin/orders/${order.id}`" 
+            class="btn btn-sm btn-primary rounded-full size-6 grid place-content-center hover:outline-1 hover:outline-primary/30 focus:outline-1 focus:outline-primary/30" 
+            title="Detalhes"
+          >
+            <i class="bi bi-three-dots"></i>
+          </router-link>
         </td>
       </tr>
     </tbody>
