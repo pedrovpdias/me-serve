@@ -10,9 +10,8 @@ use App\Models\OrderProduct;
 
 class OrderController extends Controller
 {
-    public function index(Request $request)
+    public function index($id)
     {
-        //$id = $request->input('id'); dd($id);
         $order = Order::select(
             'order_products.*', 
             'orders.client_name', 
@@ -25,7 +24,7 @@ class OrderController extends Controller
             ->join('order_products', 'orders.id', '=', 'order_products.order_id')
             ->join('products', 'products.id', '=', 'order_products.product_id')
             ->join('orders_status', 'orders.order_status_id', '=', 'orders_status.id')
-            ->where('orders.id', '=', 13)
+            ->where('orders.id', '=', $id)
             ->get();
 
         return response()->json($order);
