@@ -14,7 +14,7 @@
 
   type Product = {
     product_id: number;
-    product_name: string;
+    name: string;
     product_description: string;
     unit_price: number;
     quantity: number;
@@ -49,7 +49,7 @@
       
       if (Array.isArray(data) && data.length > 0) {
         const first = data[0];
-        console.log('first', first);
+
         clientName.value = first.client_name;
         createdAt.value = first.created_at;
         total.value = first.total;
@@ -134,7 +134,7 @@
                 <div class="grid w-full gap-0 flex-1">
                   <h3 class="text-lg font-bold font-highlight flex items-end">                  
                     {{ product.quantity > 1 ? `${product.quantity} x` : '' }}
-                    {{ product.product_name }}
+                    {{ product.name }}
                   </h3>
 
                   <p class="text-sm opacity-80">
@@ -154,7 +154,7 @@
             </div>
           </ul>
 
-          <p v-else class="text-gray-500 italic">
+          <p v-else class="italic">
             Nenhum item encontrado para este pedido.
           </p>
         </fieldset>

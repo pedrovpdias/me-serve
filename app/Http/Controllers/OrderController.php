@@ -16,7 +16,7 @@ class OrderController extends Controller
             'order_products.*', 
             'orders.client_name', 
             'orders.total', 
-            'products.name as product_name',
+            'products.name',
             'products.thumbnail',
             'products.description as product_description',
             'orders_status.description as order_status_description'
