@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { defineProps, defineEmits } from 'vue';
-
   const { name, type, placeholder, icon } = defineProps<{
     name: string,
     type: string,
