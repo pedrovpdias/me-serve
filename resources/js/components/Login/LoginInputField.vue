@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import LoginInput from './LoginInput.vue';
-  import { defineProps, defineEmits } from 'vue';
+  import { defineEmits } from 'vue';
 
   const { input } = defineProps<{
     input: {

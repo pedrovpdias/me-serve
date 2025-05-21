@@ -5,7 +5,6 @@
   import { computed, ref } from 'vue'; // Importa as bibliotecas do Vue
 
   import logo from '../../images/logo.svg'; // Importa a logo
-import { link } from 'fs';
 
   const auth = useAuthStore(); // Instancia o usuario
   const user = computed(() => auth.getUser);  // Pega os dados do usuario

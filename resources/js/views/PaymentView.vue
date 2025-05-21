@@ -9,7 +9,7 @@
   import { useCartStore } from '../stores/userCartStore'; // Importa o carrinho
   import { useCustomerStore } from '../stores/customerStore'; // Importa o usuario
 
-  import { defineProps, ref, onMounted, onUnmounted, computed } from 'vue'; // Importa as bibliotecas do Vue
+  import { ref, onMounted, onUnmounted, computed } from 'vue'; // Importa as bibliotecas do Vue
 
   const status = ref('aguardando'); // 'aguardando' | 'aprovado' | 'recusado'
 
