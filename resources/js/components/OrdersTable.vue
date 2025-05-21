@@ -1,9 +1,9 @@
 <script lang="ts" setup>
   import PerPageSelector from './PerPageSelector.vue'; // Importa o selector de itens por página
   import TableFooter from './TableFooter.vue'; // Importa o footer da tabela
-  import { onMounted, ref, computed } from 'vue'; // Importa as bibliotecas do Vue
+  import { onMounted, ref } from 'vue'; // Importa as bibliotecas do Vue
 
-  import axios, { get } from 'axios'; // Importa o axios
+  import axios from 'axios'; // Importa o axios
 
   const orders = ref<any[]>([]); // Define a lista de pedidos
 

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { defineEmits } from 'vue';
-
   // Interface dos links da paginação
   interface paginationLink {
     url: any | null;

@@ -1,9 +1,9 @@
 <script setup lang="ts">
   import Subtitle from './Subtitle.vue'; // Importa o sub-título
 
-  import { computed, onMounted, reactive, ref } from 'vue'; // Importa as bibliotecas do Vue
+  import { onMounted, ref } from 'vue'; // Importa as bibliotecas do Vue
 
-  import axios, { get } from 'axios'; // Importa o axios
+  import axios from 'axios'; // Importa o axios
   
   import { Bar } from 'vue-chartjs' // Importa o gráfico 
   import 
