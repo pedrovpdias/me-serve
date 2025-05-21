@@ -26,7 +26,17 @@
   const clientName = ref<string>('');
   const createdAt = ref<string>('');
   const total = ref<number>(0);
+  const orderStatusId = ref<number>();
   const orderStatus = ref<string>('');
+
+  const editEnabled = ref(false);
+
+  type Status = {
+    id: number;
+    description: string;
+  };
+
+  const statusOptions = ref<Status[]>([]);
 
   const breadcrumbLinks = [
     {
@@ -53,6 +63,7 @@
         clientName.value = first.client_name;
         createdAt.value = first.created_at;
         total.value = first.total;
+        orderStatusId.value = first.order_status_id;
         orderStatus.value = first.order_status_description;
 
         return data;
@@ -67,12 +78,50 @@
     }
   }
 
+  async function getStatusOptions() {
+    try {
+      const { data } = await axios('/api/status');
+      return statusOptions.value = data;
+    } catch (error) {
+      console.error('Erro ao buscar opções de status:', error);
+    }
+  }
+
+  // Função para alternar a edição (habilitar/desabilitar)
+  function toggleEdit() {
+    editEnabled.value = !editEnabled.value;
+  }
+
+  async function saveOrder() {
+    try {
+      const { data } = await axios.put(`/api/orders/${id}`, {
+        order_status_id: orderStatusId.value
+      });
+      
+      const first = data[0];
+      
+      orderStatusId.value = first.order_status_id;
+      orderStatus.value = first.description;
+
+      console.log('Pedido salvo com sucesso.');
+      toggleEdit();
+    } catch (error) {
+      console.error('Erro ao salvar pedido:', error);
+    }
+  }
+
   onMounted(async () => {
     try {
       order.value = await getOrderDetails(id as string);
 
     } catch (error) {
       console.error('Erro ao buscar detalhes do pedido:', error);
+    }
+
+    try {
+      statusOptions.value = await getStatusOptions();
+    } catch (error) {
+      console.error('Erro ao buscar opções de status:', error);
     }
   })
 </script>
@@ -85,10 +134,24 @@
       <Title :text="`Pedido #${id.toString().padStart(6, '0')}`" />
 
       <section class="grid gap-8">
-        <fieldset class="grid gap-4 border border-primary/10 p-4 rounded-xl">
+        <fieldset class="grid gap-4 border border-primary/10 p-4 rounded-xl relative">
           <legend class="text-sm opacity-80 px-4">
             Informações do pedido
           </legend>
+
+          <div class="absolute top-4 right-4 size-fit grid gap-2 place-items-center">
+            <span class="text-sm opacity-80">
+              Habilitar edição
+            </span>
+
+            <button 
+              class="relative w-10 h-4 shadow-inner rounded-full grid content-center"
+              :class="[editEnabled ? 'bg-green-300 justify-end' : 'bg-primary/10 justify-start']"
+              @click="toggleEdit"
+            >
+              <div name="icon" class="size-6 aspect-square rounded-full border border-primary/10 shadow bg-gray-100" />
+            </button>
+          </div>
 
           <div class="grid">
             <span class="text-sm">
@@ -110,14 +173,36 @@
             </span>
           </div>
           
-          <div class="grid gap-2">
+          <div v-if="!editEnabled" class="grid gap-2">
             <span class="text-sm">
               Status do pedido
             </span>
 
             <span class="font-semibold text-lg">
-              {{  orderStatus || '' }}  
+              {{  orderStatus }}  
             </span>
+          </div>
+
+          <div v-else class="grid gap-2">
+            <label class="text-sm" for="status">
+              Status do pedido
+            </label>
+
+            <select 
+              name="status" 
+              id="status" 
+              class="w-fit border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+              v-model="orderStatusId"
+              @change="saveOrder"
+            >
+              <option 
+                v-for="option in statusOptions" 
+                :key="option.id" 
+                :value="option.id"
+              >
+                {{ option.description }}
+              </option>
+            </select>
           </div>
         </fieldset>
 

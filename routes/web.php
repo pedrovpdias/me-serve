@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\OrderStatusController;
 
 // Rotas da API
 
@@ -28,6 +29,9 @@ Route::get('/api/payment-status', [PaymentController::class, 'index'])->name('pa
 // Retorna os pedidos por paginação
 Route::get('/api/orders', [OrdersController::class, 'index'])->name('orders');
 Route::post('/api/orders', [OrdersController::class, 'store'])->name('orders.store');
+// Altera o status do pedido
+Route::put('/api/orders/{id}', [OrdersController::class, 'update'])->name('orders.update');
+
 // Retorna os 10 pedidos mais recentes
 Route::get('/api/latest-orders', [OrdersController::class, 'latestOrders'])->name('orders.latest');
 // Conta quantos pedidos foram feitos hoje
@@ -43,6 +47,8 @@ Route::get('/api/weekly-products-sold', [OrdersController::class, 'weeklyProduct
 Route::get('/api/orders/{id}', [OrderController::class, 'index'])->name('order.details');
 Route::put('/api/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
 
+// STATUS
+Route::get('/api/status', [OrderStatusController::class, 'index'])->name('status');
 
 // VERIFICA SE O E-MAIL EXISTE NO BANCO DE DADOS
 Route::post('/api/login/verify-email', [AuthController::class, 'verifyEmail'])->name('login.verify-email');
