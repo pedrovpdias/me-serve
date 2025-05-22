@@ -13,4 +13,8 @@ class ProductsController extends Controller
         $idCategory = $request->query('category_id'); // Pega o id da categoria
         return response()->json(Product::where('category_id', $idCategory)->get()); // Retorna os produtos
     }
+
+    public function latestProducts() {
+        return response()->json(Product::latest()->take(5)->orderBy('id', 'desc') ->get()); // Retorna os 5 produtos mais recentes
+    }
 }

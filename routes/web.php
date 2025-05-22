@@ -19,6 +19,7 @@ Route::get('/api/categories', [CategoriesController::class, 'index'])->name('cat
 
 // PRODUTOS
 Route::get('/api/products', [ProductsController::class, 'index'])->name('products');
+Route::get('/api/latest-products', [ProductsController::class, 'latestProducts'])->name('products.latest');
 
 
 // PAGAMENTO

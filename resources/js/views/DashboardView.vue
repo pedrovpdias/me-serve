@@ -4,6 +4,7 @@
   import SalesReports from '../components/SalesReports.vue'; // Importa os relatórios de vendas
   import SalesChart from '../components/SalesChart.vue'; // Importa o gráfico de vendas
   import LatestOrders from '../components/LatestOrders.vue'; // Importa os ultimos pedidos
+  import LatestProducts from '../components/LatestProducts.vue'; // Importa os produtos recentes
 
   const breadcrumbLinks = [
     {
@@ -22,10 +23,12 @@
 
       <SalesReports />
 
-      <section class="flex items-start gap-8 no-wrap">
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <SalesChart />
 
         <LatestOrders />
+
+        <LatestProducts />
       </section>
       
     </div>
