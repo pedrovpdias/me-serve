@@ -9,8 +9,9 @@
 
   type tableRow = {
     id: string,
-    total: string,
-    name: string
+    thumbnail: string,
+    name: string,
+    price: string,    
   }
 
   type tableProps = {
@@ -23,7 +24,8 @@
   const tableProps = ref<tableProps>({
     table: 'Produtos recentes',
     columns: [
-      'ID', 
+      'ID',
+      '',
       'Nome',
       'Valor', 
     ],
@@ -40,6 +42,7 @@
 
     else {
       let productsId: string = '';
+
       let row: any = {
         col: []
       };
@@ -55,6 +58,7 @@
         row = {
           col: [
             products.id,
+            products.thumbnail,
             products.name,
             products.price,
           ]
