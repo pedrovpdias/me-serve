@@ -2,6 +2,8 @@
   import AdminHeader from '../components/AdminHeader.vue'; // Importa o AdminHeader
   import Title from '../components/Title.vue'; // Importa o título
   import ProductThumbnail from '../components/ProductThumbnail.vue'; // Importa o card de produto
+  import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
+  import ToastSuccess from '../components/ToastSuccess.vue'; // Importa o toast de sucesso
 
   import axios from 'axios'; // Importa o axios
 
@@ -9,9 +11,10 @@
 
   import { useRoute } from 'vue-router'; // Importa o router
 
-  const $route = useRoute();
-  const id = $route.params.orderId;
+  const $route = useRoute(); // Instancia o router
+  const id = $route.params.orderId; // Recebe o id do pedido como parâmetro da rota
 
+  // Define o produto
   type Product = {
     product_id: number;
     name: string;
@@ -21,23 +24,26 @@
     thumbnail: string;
   };
   
-  const order = ref<Product[]>([]);
+  const order = ref<Product[]>([]); // Define o pedido
 
+  // Define os detalhes do pedido
   const clientName = ref<string>('');
   const createdAt = ref<string>('');
   const total = ref<number>(0);
   const orderStatusId = ref<number>();
   const orderStatus = ref<string>('');
 
-  const editEnabled = ref(false);
+  const editEnabled = ref(false); // Define se a edição está habilitada
 
+  // Define as opções de status
   type Status = {
     id: number;
     description: string;
   };
 
-  const statusOptions = ref<Status[]>([]);
+  const statusOptions = ref<Status[]>([]); // Define as opções de status
 
+  // Define os links do breadcrumb
   const breadcrumbLinks = [
     {
       name: 'Dashboard' as string,
@@ -53,37 +59,54 @@
     },
   ];
 
+  const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
+  const errorMessage = ref(''); // Para exibir mensagens de erro
+  const toastSuccessRef = ref<InstanceType<typeof ToastSuccess> | null>(null); // Instancia o toast de sucesso
+  const successMessage = ref(''); // Para exibir mensagens de sucesso
+
+  // Função para buscar os detalhes do pedido
   async function getOrderDetails(id: string) {
+    errorMessage.value = ''; // Limpa qualquer mensagem de erro anterior
+    successMessage.value = ''; // Limpa qualquer mensagem de sucesso anterior
+
     try {
-      const { data } = await axios(`/api/orders/${id}`);
+      const { data } = await axios(`/api/orders/${id}`); // Realiza a requisição para pegar os detalhes do pedido
       
+      // Se o pedido for encontrado
       if (Array.isArray(data) && data.length > 0) {
-        const first = data[0];
+        const first = data[0]; // Pega o primeiro pedido
 
-        clientName.value = first.client_name;
-        createdAt.value = first.created_at;
-        total.value = first.total;
-        orderStatusId.value = first.order_status_id;
-        orderStatus.value = first.order_status_description;
+        clientName.value = first.client_name; // Define o nome do cliente
+        createdAt.value = first.created_at; // Define a data de criação do pedido
+        total.value = first.total; // Define o total do pedido
+        orderStatusId.value = first.order_status_id; // Define o status do pedido
+        orderStatus.value = first.order_status_description; // Define a descrição do status
 
-        return data;
+        return data; // Retorna os detalhes do pedido
       } else {
-        console.warn('Pedido não encontrado.');
+        errorMessage.value = 'Pedido não encontrado.'; // Define a mensagem de erro
+        toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
+
         return [];
       }
 
     } catch (error) {
-      console.error('Erro ao buscar detalhes do pedido:', error);
-      throw error; // Lanca o erro para ser tratado no componente
+      errorMessage.value = 'Erro ao buscar detalhes do pedido.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
+
+      throw error; // Lança o erro para ser tratado no componente
     }
   }
 
+  // Função para buscar as opções de status
   async function getStatusOptions() {
     try {
-      const { data } = await axios('/api/status');
-      return statusOptions.value = data;
+      const { data } = await axios('/api/status'); // Realiza a requisição para pegar as opções de status
+
+      return statusOptions.value = data; // Retorna as opções de status
     } catch (error) {
-      console.error('Erro ao buscar opções de status:', error);
+      errorMessage.value = 'Erro ao buscar opções de status.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
     }
   }
 
@@ -92,36 +115,45 @@
     editEnabled.value = !editEnabled.value;
   }
 
+  // Função para salvar o pedido
   async function saveOrder() {
+    // Realiza a requisição para salvar o pedido
     try {
       const { data } = await axios.put(`/api/orders/${id}`, {
         order_status_id: orderStatusId.value
       });
       
-      const first = data[0];
+      const first = data[0]; // Pega o primeiro pedido
       
-      orderStatusId.value = first.order_status_id;
-      orderStatus.value = first.description;
+      orderStatusId.value = first.order_status_id; // Define o novo status do pedido
+      orderStatus.value = first.description; // Define a nova descrição do status
 
-      console.log('Pedido salvo com sucesso.');
-      toggleEdit();
+      successMessage.value = 'Pedido salvo com sucesso.'; // Define a mensagem de sucesso
+      toastSuccessRef.value?.showToast(successMessage.value); // Exibe o toast de sucesso
+
+      toggleEdit(); // Desabilita a edição
     } catch (error) {
-      console.error('Erro ao salvar pedido:', error);
+      errorMessage.value = 'Erro ao salvar o pedido.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
     }
   }
 
+  // Função para lidar com o montagem do componente
   onMounted(async () => {
     try {
-      order.value = await getOrderDetails(id as string);
+      order.value = await getOrderDetails(id as string); // Busca os detalhes do pedido
 
     } catch (error) {
-      console.error('Erro ao buscar detalhes do pedido:', error);
+      errorMessage.value = 'Erro ao buscar detalhes do pedido.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
     }
 
+    // Busca as opções de status
     try {
-      statusOptions.value = await getStatusOptions();
+      statusOptions.value = await getStatusOptions(); // Busca as opções de status
     } catch (error) {
-      console.error('Erro ao buscar opções de status:', error);
+      errorMessage.value = 'Erro ao buscar opções de status.'; // Define a mensagem de erro
+      toastErrorRef.value?.showToast(errorMessage.value); // Exibe o toast de erro
     }
   })
 </script>
@@ -129,6 +161,9 @@
 <template>
   <main class="flex flex-col gap-8 relative md:w-auto md:flex-1 md:max-w-4xl mx-auto bg-white shadow-xl py-4 min-h-screen">
     <AdminHeader :breadcrumbLinks="breadcrumbLinks" />
+
+    <ToastError ref="toastErrorRef" />
+    <ToastSuccess ref="toastSuccessRef" />
 
     <div class="flex flex-col gap-8 px-8">
       <Title :text="`Pedido #${id.toString().padStart(6, '0')}`" />
