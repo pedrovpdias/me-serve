@@ -9,6 +9,7 @@ import CheckoutView from '@/views/CheckoutView.vue'; // Importa a view Checkout
 import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
 import OrdersView from '@/views/OrdersView.vue'; // Importa a view Orders
 import OrderDetailsView from '@/views/OrderDetailsView.vue'; // Importa a view OrderDetails
+import ProductsView from '@/views/ProductsView.vue'; // Importa a view Products
 
 // Importa as views privadas
 import DashboardView from '@/views/DashboardView.vue';
@@ -76,6 +77,14 @@ const router = createRouter({
       path: '/admin/orders/:orderId',
       name: 'order-details',
       component: OrderDetailsView,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/admin/products',
+      name: 'products',
+      component: ProductsView,
       meta: {
         requiresAuth: true
       }
