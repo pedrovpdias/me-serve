@@ -19,7 +19,9 @@ Route::get('/api/categories', [CategoriesController::class, 'index'])->name('cat
 
 // PRODUTOS
 Route::get('/api/products', [ProductsController::class, 'index'])->name('products');
-Route::post('/api/products', [ProductsController::class, 'show'])->name('products.show');
+// Retorna os produtos por paginação
+Route::get('/api/products-list', [ProductsController::class, 'show'])->name('products.show');
+
 Route::get('/api/latest-products', [ProductsController::class, 'latestProducts'])->name('products.latest');
 
 
