@@ -10,6 +10,7 @@ import PaymentView from '@/views/PaymentView.vue'; // Importa a view Payment
 import OrdersView from '@/views/OrdersView.vue'; // Importa a view Orders
 import OrderDetailsView from '@/views/OrderDetailsView.vue'; // Importa a view OrderDetails
 import ProductsView from '@/views/ProductsView.vue'; // Importa a view Products
+import ProductUpdateView from '@/views/ProductUpdateView.vue'; // Importa a view ProductUpdate
 
 // Importa as views privadas
 import DashboardView from '@/views/DashboardView.vue';
@@ -88,7 +89,15 @@ const router = createRouter({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/admin/products/:productId',
+      name: 'product-update',
+      component: ProductUpdateView,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ],
 });
 

@@ -2,7 +2,6 @@
   import AdminHeader from '../components/AdminHeader.vue'; // Importa o AdminHeader
   import Title from '../components/Title.vue'; // Importa o título
   import ProductsTable from '../components/ProductsTable.vue'; // Importa a tabela de produtos
-import router from '../router';
 
   const breadcrumbLinks = [
     {
