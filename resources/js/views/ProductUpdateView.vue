@@ -3,10 +3,13 @@
   import Title from '../components/Title.vue'; // Importa o título
   import ToastError from '../components/ToastError.vue'; // Importa o toast de erro
   import ToastSuccess from '../components/ToastSuccess.vue'; // Importa o toast de sucesso
+  import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
 
   import { onMounted, ref } from 'vue'; // Importa as bibliotecas do Vue
 
   import { useRoute } from 'vue-router'; // Importa o router
+
+  import axios from 'axios'; // Importa o axios
 
   const $route = useRoute(); // Instancia o router
   const id = $route.params.orderId; // Recebe o id do pedido como parâmetro da rota
@@ -15,6 +18,8 @@
   const errorMessage = ref(''); // Para exibir mensagens de erro
   const toastSuccessRef = ref<InstanceType<typeof ToastSuccess> | null>(null); // Instancia o toast de sucesso
   const successMessage = ref(''); // Para exibir mensagens de sucesso
+
+  const categories = ref<any[]>([]);
 
   const breadcrumbLinks = [
     {
@@ -30,6 +35,27 @@
       path: `/admin/products/${id}` as string,
     },
   ];
+
+  async function handleSubmit() {
+    console.log('ProductUpdateView handleSubmit');
+  }
+
+  async function handleDelete() {
+    console.log('ProductUpdateView handleDelete');
+  }
+
+  async function handleFileChange() {
+    console.log('ProductUpdateView handleCancel');
+  }
+
+  async function getCategories() {
+    const { data } = await axios.get('/api/categories');
+    categories.value = data;
+  }
+
+  onMounted(() => {
+    getCategories();
+  })
 </script>
 
 <template>
@@ -42,7 +68,74 @@
     <div class="flex flex-col gap-8 px-8">
       <Title :text="'Nome do produto'" />
 
-      
+      <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+          <label for="name" class="text-sm font-semibold">
+            Nome
+          </label>
+
+          <input 
+            type="text" 
+            placeholder="Digite o nome do produto" 
+            id="name" name="name"
+            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+            autocomplete="off"
+          />
+        </div>        
+
+        <div class="flex flex-col gap-2">
+          <label for="description" class="text-sm font-semibold">
+            Descrição
+          </label>
+
+          <textarea 
+            placeholder="Digite a descrição do produto" 
+            id="description" name="description"
+            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+            autocomplete="off"
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="price" class="text-sm font-semibold">
+            Preço
+          </label>
+
+          <input 
+            type="text" 
+            placeholder="Digite o preco do produto" 
+            id="price" name="price"
+            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <label for="category" class="text-sm font-semibold">
+            Categoria
+          </label>
+
+          <select 
+            id="category" name="category"
+            class="border border-primary/20 rounded-lg px-4 py-2 focus:border-red-600/50 focus:outline-1 focus:outline-red-600/30"
+            autocomplete="off"
+          >
+            <option v-for="category in categories" :value="category.id" :key="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="file">
+            Escolha um arquivo:
+          </label>
+
+          <input type="file" id="file" @change="handleFileChange" />
+        </div>
+
+        <DefaultButton :text="'Atualizar'" :event="handleSubmit"/>
+      </form>
     </div>
   </main>
 </template>
