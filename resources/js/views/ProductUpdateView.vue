@@ -5,7 +5,7 @@
   import ToastSuccess from '../components/ToastSuccess.vue'; // Importa o toast de sucesso
   import DefaultButton from '../components/DefaultButton.vue'; // Importa o botão padrão
 
-  import { onMounted, ref } from 'vue'; // Importa as bibliotecas do Vue
+  import { computed, onMounted, ref } from 'vue'; // Importa as bibliotecas do Vue
 
   import { useRoute } from 'vue-router'; // Importa o router
 
@@ -21,7 +21,9 @@
 
   const categories = ref<any[]>([]);
 
-  const file = ref('');
+  const file = ref<any>([]);
+
+  const URL = computed(() => window.URL);
 
   const breadcrumbLinks = [
     {
@@ -47,12 +49,18 @@
   }
 
   async function handleFileChange() {
-    console.log('ProductUpdateView handleCancel');
+    const fileInput = document.getElementById('file') as HTMLInputElement;
+    file.value = fileInput.files ? fileInput.files[0] : '';
+    console.log(file.value);
   }
 
   async function getCategories() {
     const { data } = await axios.get('/api/categories');
     categories.value = data;
+  }
+
+  async function updateUploadButtonText() {
+    console.log(file.value);
   }
 
   onMounted(() => {
@@ -129,24 +137,27 @@
         </div>
 
         <div>
-          <label for="file" class="grig w-full h-auto border border-dashed border-primary/20 rounded-lg flex items-center justify-center">
-            <span v-if="!file" class="text-sm font-semibold grid place-items-center gap-2 cursor-pointer p-4">
+          <label 
+            for="file" 
+            class="grig w-full h-auto border border-dashed border-primary/20 rounded-lg flex items-center justify-center"
+          >
+            <span v-if="file.length === 0" class="text-sm font-semibold grid place-items-center gap-2 cursor-pointer p-4">
               <i class="bi bi-upload text-2xl"></i>
 
               Selecione a imagem do produto
             </span>
 
-            <img 
-              v-else
-              :src="file"
-              class="w-full h-full object-cover"
-            />
+            <span v-else class="text-sm font-semibold grid place-items-center gap-2 cursor-pointer p-4">
+              <img :src="URL.createObjectURL(file)" class="w-full h-auto" />
+            </span>
 
             <input 
               type="file" 
               id="file" 
               @change="handleFileChange" 
               class="hidden"
+              accept="image/*"
+              autocomplete="off"
             />
           </label>
 
