@@ -21,6 +21,8 @@
 
   const categories = ref<any[]>([]);
 
+  const file = ref('');
+
   const breadcrumbLinks = [
     {
       name: 'Dashboard' as string,
@@ -127,11 +129,28 @@
         </div>
 
         <div>
-          <label for="file">
-            Escolha um arquivo:
+          <label for="file" class="grig w-full h-auto border border-dashed border-primary/20 rounded-lg flex items-center justify-center">
+            <span v-if="!file" class="text-sm font-semibold grid place-items-center gap-2 cursor-pointer p-4">
+              <i class="bi bi-upload text-2xl"></i>
+
+              Selecione a imagem do produto
+            </span>
+
+            <img 
+              v-else
+              :src="file"
+              class="w-full h-full object-cover"
+            />
+
+            <input 
+              type="file" 
+              id="file" 
+              @change="handleFileChange" 
+              class="hidden"
+            />
           </label>
 
-          <input type="file" id="file" @change="handleFileChange" />
+          
         </div>
 
         <DefaultButton :text="'Atualizar'" :event="handleSubmit"/>
