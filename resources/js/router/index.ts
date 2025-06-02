@@ -89,6 +89,14 @@ const router = createRouter({
       meta: {
         requiresAuth: true
       }
+    },    
+    {
+      path: '/admin/products/new',
+      name: 'product-create',
+      component: ProductUpdateView,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/admin/products/:productId',

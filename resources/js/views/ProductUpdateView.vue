@@ -9,10 +9,10 @@
 
   import { useRoute } from 'vue-router'; // Importa o router
 
-  import axios from 'axios'; // Importa o axios
+  import axios, { get } from 'axios'; // Importa o axios
 
   const $route = useRoute(); // Instancia o router
-  const id = $route.params.orderId; // Recebe o id do pedido como parâmetro da rota
+  const id = $route.params.productId; // Recebe o id do pedido como parâmetro da rota
 
   const toastErrorRef = ref<InstanceType<typeof ToastError> | null>(null); // Instancia o toast de erro
   const errorMessage = ref(''); // Para exibir mensagens de erro
@@ -59,12 +59,21 @@
     categories.value = data;
   }
 
+  async function getProduct() {
+    const { data } = await axios.get(`/api/products/${id}`);
+    console.log(data);
+  }
+
   async function updateUploadButtonText() {
     console.log(file.value);
   }
 
   onMounted(() => {
     getCategories();
+
+    if(id) {
+      getProduct();
+    }
   })
 </script>
 
@@ -76,7 +85,7 @@
     <ToastSuccess ref="toastSuccessRef" />
 
     <div class="flex flex-col gap-8 px-8">
-      <Title :text="'Nome do produto'" />
+      <Title :text="'Novo produto'" />
 
       <form @submit.prevent="handleSubmit" class="flex flex-col gap-4">
         <div class="flex flex-col gap-2">
@@ -167,7 +176,9 @@
           
         </div>
 
-        <DefaultButton :text="'Atualizar'" :event="handleSubmit"/>
+        <div class="flex justify-end">
+          <DefaultButton :text="'Atualizar'" :event="handleSubmit"/>
+        </div>
       </form>
     </div>
   </main>

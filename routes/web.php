@@ -10,6 +10,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OrderStatusController;
+use App\Http\Controllers\ProductController;
 
 // Rotas da API
 
@@ -23,6 +24,8 @@ Route::get('/api/products', [ProductsController::class, 'index'])->name('product
 Route::get('/api/products-list', [ProductsController::class, 'show'])->name('products.show');
 
 Route::get('/api/latest-products', [ProductsController::class, 'latestProducts'])->name('products.latest');
+
+Route::get('/api/products/{id}', [ProductController::class, 'index'])->name('products.details');
 
 
 // PAGAMENTO
