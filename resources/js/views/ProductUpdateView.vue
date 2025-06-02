@@ -148,7 +148,9 @@
             </span>
 
             <span v-else class="text-sm font-semibold grid place-items-center gap-2 cursor-pointer p-4">
-              <img :src="URL.createObjectURL(file)" class="w-full h-auto" />
+              <img :src="URL.createObjectURL(file)" class="w-full max-w-64 rounded-lg h-auto" />
+
+              {{ file.name }}
             </span>
 
             <input 
@@ -159,6 +161,7 @@
               accept="image/*"
               autocomplete="off"
             />
+            
           </label>
 
           
